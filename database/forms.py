@@ -1,8 +1,9 @@
-from django.forms import Form, TextInput
+from django import forms
+from dope.settings import MAX_DIAGRAM_SLUG_LEN
 
-class CreateDiagramForm(Form):
-    def __init__(self, *args, **kwargs):
-        super(Form, self).__init__(*args, **kwargs)
+class CreateDiagramForm(forms.Form):
+    #def __init__(self, *args, **kwargs):
+        #super(forms.Form, self).__init__(*args, **kwargs)
         
-    diagram_name = TextInput()
+    diagram_name = forms.SlugField(max_length=MAX_DIAGRAM_SLUG_LEN)
     

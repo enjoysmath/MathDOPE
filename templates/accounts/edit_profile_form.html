@@ -1,9 +1,7 @@
  {% load crispy_forms_tags %}
  
  <form method="post">
-  {% csrf_token %}
   {{ user_form|crispy }}
   {{ profile_form|crispy }}
-  <p><input type="submit" value="Done Editing" class='btn btn-success' style="color:white"></p>
  </form>
  

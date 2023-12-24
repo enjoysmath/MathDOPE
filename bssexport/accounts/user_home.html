@@ -27,9 +27,8 @@
         <div dj-include="messages.html"></div>
     </div>
     <header class="text-center text-white masthead" style="background: url(&quot;/assets/img/accounts/pillars_of_creation.jpg&quot;) center / cover repeat;height: 679px;max-height: none;padding: 0px;padding-top: 20px;">
-        <h3>Welcome to your home,&nbsp;<span style="color: var(--bs-yellow);">{{ user.get_username }}</span>.</h3>
         <div class="card" style="min-width: auto;max-width: auto;width: 90%;margin: auto;border-radius: 15px;background: rgba(255,255,255,0.48);color: var(--bs-blue);">
-            <div class="card-body d-inline-block justify-content-end align-items-start align-self-start flex-wrap my-auto" style="width: auto;max-width: auto;color: var(--bs-blue);min-width: auto;padding: auto;"><a class="btn btn-primary" role="button" id="create-diagram-button" href="{% url 'create_diagram' %}" method="get" style="margin: 5px;">Create Diagram</a><a class="btn btn-primary" role="button" id="edit-account-button" href="{% url 'edit_profile' %}" method="get" style="margin: 5px;">Edit Account</a></div>
+            <div class="card-body d-inline-block justify-content-end align-items-start align-self-start flex-wrap my-auto" style="width: auto;max-width: auto;color: var(--bs-blue);min-width: auto;padding: auto;"><a class="btn btn-primary" role="button" id="create-diagram-button" href="{% url 'create_diagram' %}" method="get" style="margin: 5px;">Create Diagram</a><a class="btn btn-primary" role="button" id="edit-account-button" href="{% url 'edit_profile' %}" method="get" style="margin: 5px;">Edit Account</a><a class="btn btn-primary" role="button" id="create-diagram-button-2" href="{% url 'create_diagram' %}" method="get" style="margin: 5px;">Create Diagram</a></div>
         </div>
     </header>
     <footer class="bg-light footer">
