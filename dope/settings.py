@@ -57,8 +57,8 @@ INSTALLED_APPS = [
     'cd_editor.apps.CdEditorConfig',
     'database.apps.DatabaseConfig',
     'django_neomodel',
-    #'social_django',
-    #'django_extensions',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -188,6 +188,10 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Crispy forms:
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # TODO: Enable Click-jacking protection
 X_FRAME_OPTIONS = 'ALLOW'   # ie set this to "DENY"

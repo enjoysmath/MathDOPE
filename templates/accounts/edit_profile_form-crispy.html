@@ -1,0 +1,8 @@
+
+ 
+  <form method="post" enctype="multipart/form-data">
+   {{ user_form.as_p }}
+   {{ profile_form.as_p }}
+   {% csrf_token %}
+   <p><input type="submit" value="Save changes" class='btn btn-success'></p>
+ </form>
