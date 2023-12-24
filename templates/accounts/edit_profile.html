@@ -59,9 +59,6 @@
     </div>
    </div>
   </nav>
-  <div id="django-messages-div" style="position:absolute; width:100%; z-index:1">
-   {% include 'messages.html' %}
-  </div>
   <header class="text-center text-white masthead" style='background: url({% static "accounts/img/pillars_of_creation.jpg" %}) center / cover repeat;height: 1002px;padding: 10px;'>
    <div class="card" style="min-width: auto;max-width: 500px;width: auto;margin: auto;border-radius: 15px;background: rgba(255,255,255,0.78);color: var(--bs-blue);margin-right: auto;margin-left: auto;margin-top: 67px;">
     <div class="card-body" style="width: auto;max-width: auto;color: var(--bs-blue);min-width: auto;">
@@ -71,6 +68,9 @@
      <p>
       Please use the following form to edit your account:
      </p>
+     <div id="django-messages-div" style="width:auto">
+      {% include 'messages.html' %}
+     </div>
      {% include 'edit_profile_form.html' %}
     </div>
    </div>

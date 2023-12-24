@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
+from django.contrib import messages
 
 #def sign_up(request):
     #if request.method == 'POST':
@@ -72,6 +73,9 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():            
             user_form.save()
             profile_form.save()
+            messages.success(request, 'Successfully updated your account in the database! 😉')
+        else:
+            messages.error(request, 'The form you submitted has some invalid entries. 😿')
             
     else:
         user_form = UserEditForm(instance=request.user)
