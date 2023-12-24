@@ -3,5 +3,7 @@
  <form method="post">
   {{ user_form|crispy }}
   {{ profile_form|crispy }}
+  {% csrf_token %}
+  <p><input type="submit" value="Save changes" class='btn btn-success'></p>
  </form>
  
