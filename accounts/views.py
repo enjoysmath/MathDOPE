@@ -1,4 +1,5 @@
 from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
 #from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -72,7 +73,9 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():            
             user_form.save()
             profile_form.save()
-            
+            messages.success(request, 'Account updated successfully! 😉')
+        else:
+            messages.error(request, 'Error updating your account. 😢')
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
