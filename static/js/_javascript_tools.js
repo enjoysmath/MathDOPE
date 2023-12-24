@@ -9,7 +9,20 @@ function load_html_from_url(url, elem) {
 
 function set_diagram_name(name)
 {
-    $("#diagram-name").text(name);
+    const name_elem = $("#diagram-name");
+    name_elem.text(name);
+    render_element_in_katex(name_elem[0]);
+}
+
+function render_element_in_katex(element)
+{
+    renderMathInElement(element, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "$", right: "$", display: false}
+          ],
+          throwOnError : false
+        });
 }
 
 

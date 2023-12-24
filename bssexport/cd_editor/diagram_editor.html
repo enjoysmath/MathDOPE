@@ -10,6 +10,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower&amp;display=swap">
     <link rel="stylesheet" href="/assets/css/accounts/user_home_tabs.css">
     <link rel="stylesheet" href="/assets/css/cd_editor/navbar.css">
+<link rel="stylesheet" href="{% static 'quiver/src/KaTeX/katex.min.css' %}">
+<script defer src="{% static 'quiver/src/KaTeX/katex.min.js' %}"></script>
+<script defer src="{% static 'quiver/src/KaTeX/contrib/auto-render.min.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$", right: "$", display: true},
+              {left: "$", right: "$", display: false}
+          ],
+          throwOnError : false
+        });
+    });
+</script>
 </head>
 
 <body style="height: 100%;width: 100%;margin-right: -10px;">
@@ -24,7 +38,7 @@
                     <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
                         <div class="nav-item dropdown"><a class="active d-xl-flex align-items-xl-center btn btn-primary" aria-expanded="false" data-bs-toggle="dropdown" href="#">Select</a>
                             <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="select-dropdown-menu" style="background: transparent;"><a class="dropdown-item d-lg-flex justify-content-lg-end dropdown-menu-end" href="#">
-                                    <div class="btn-group-vertical" role="group" style="border-style: none;"><button class="btn btn-primary" id="select-all-button" type="button">Select All</button><button class="btn btn-primary" id="deselect-all-button-1" type="button">&nbsp;Deselect</button></div>
+                                    <div class="btn-group-vertical" role="group" style="border-style: none;"></div>
                                 </a></div>
                         </div>
                     </li>
@@ -56,7 +70,7 @@
     <div id="django-messages-div" style="position:absolute; width:100%">
         <div dj-include="messages.html"></div>
     </div>
-    <h3 class="text-break text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;width: 100%;margin-right: 16px;margin-left: 6px;padding-right: 75px;padding-left: 68px;"><br><strong>ijoiajodfjiaodjiodfsoijaoijiadjioadfoijodfjoiadfjadfoijaodjioadj</strong><br><br></h3>
+    <h3 class="text-break fw-light text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;width: 100%;margin-right: 16px;margin-left: 6px;padding-right: 75px;padding-left: 68px;font-family: sans-serif;"><br><strong>ijoiajodfjiaodjiodfsoijaoijiadjioadfoijodfjoiadfjadfoijaodjioadj</strong><br><br></h3>
     <div dj-include="diagram_editor_include.html"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

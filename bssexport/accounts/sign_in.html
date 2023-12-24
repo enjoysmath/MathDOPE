@@ -10,6 +10,20 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/accounts/user_home_tabs.css">
+<link rel="stylesheet" href="{% static 'quiver/src/KaTeX/katex.min.css' %}">
+<script defer src="{% static 'quiver/src/KaTeX/katex.min.js' %}"></script>
+<script defer src="{% static 'quiver/src/KaTeX/contrib/auto-render.min.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$", right: "$", display: true},
+              {left: "$", right: "$", display: false}
+          ],
+          throwOnError : false
+        });
+    });
+</script>
 </head>
 
 <body>
