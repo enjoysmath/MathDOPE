@@ -16,7 +16,7 @@ def diagram_editor(request, diagram_name:str):
 
 #@login_required
 #def create_new_diagram(request):
-    #diagram = Diagram.our_create(name='', checked_out_by=request.user.username)
+    #diagram = Diagram.our_create(name='', author=request.user.username)
     #session = request.session
     
     #if 'diagram ids' not in session:

@@ -285,8 +285,9 @@ class Diagram(StructuredNode):
     #"""
    
     uid = UniqueIdProperty()
-    name = StringProperty(required=True)
-    checked_out_by = StringProperty(max_length=MAX_ATOMIC_LATEX_LENGTH)
+    name = StringProperty()
+    slug_name = StringProperty(required=True)
+    author_id = IntegerProperty(required=True)
     objects = RelationshipTo('Object', 'HAS_OBJECT', cardinality=ZeroOrMore)       
     
     def morphism_count(self):
@@ -528,6 +529,7 @@ class CommutativityProperty(DiagramProperty):
     COMMUTES = { 'NC' : 'Non-commutative', 'C' : 'Commutes',  'DNC': 'Does not commute'}
     commutes = StringProperty(choices=COMMUTES, default='NC')
         
+        
 class LivesInCategory(DiagramProperty):
     category = RelationshipTo('Category', 'LIVES_IN', cardinality=One)
     
@@ -536,65 +538,65 @@ class DiagramSet(StructuredNode):
     diagrams = RelationshipTo('Diagram', 'CONTAINS', cardinality=ZeroOrMore)
     
 
-class DiagramRule(Arrow):
-    checked_out_by = StringProperty(max_length=MAX_ATOMIC_LATEX_LENGTH)
+#class DiagramRule(Arrow):
+    #author_id = StringProperty(required=True)
     
-    # Mathematics
-    #functor_id = StringProperty()
-    # The link to an actual known functor, if this rule is factorial, or None otherwise
-    # We will have to be careful when deleting a Functor.  We can only delete it
-    # if there exist no rules referring to it through this property.
+    ## Mathematics
+    ##functor_id = StringProperty()
+    ## The link to an actual known functor, if this rule is factorial, or None otherwise
+    ## We will have to be careful when deleting a Functor.  We can only delete it
+    ## if there exist no rules referring to it through this property.
     
-    @property
-    def checked_out_by(self):
-        return self.checkedOutBy
+    #@property
+    #def author(self):
+        #return 
     
-    @checked_out_by.setter
-    def checked_out_by(self, username):
-        if self.checked_out_by != username:
-            diagram = self.key_diagram.single()
-            diagram.checked_out_by = username
-            diagram.save()
-            diagram = self.result_diagram.single()
-            diagram.checked_out_by = username
-            diagram.save()
-            self.checkedOutBy = username
-            self.save()
+    #@author.setter
+    #def author(self, username):
+        #if self.author != username:
+            #diagram = self.key_diagram.single()
+            #diagram.author = username
+            #diagram.save()
+            #diagram = self.result_diagram.single()
+            #diagram.author = username
+            #diagram.save()
+            #self.checkedOutBy = username
+            #self.save()
             
-    def can_be_checked_out(self):
-        return self.key_diagram.single().checked_out_by is None and \
-            self.result_diagram.single().checked_out_by is None and \
-            self.checked_out_by is None
+    #def can_be_checked_out(self):
+        #return self.key_diagram.single().author is None and \
+            #self.result_diagram.single().author is None and \
+            #self.author is None
     
-    @staticmethod
-    def our_create(key=None, res=None, **kwargs):
-        if key is None:
-            key = 'Key'
-        if res is None:
-            res = 'Result'
-            
-        #cat = get_unique(Category, name='Any')    
-        source = Diagram(name=key).save()
-        #source.category.connect(cat)
-        source.save()
-        target = Diagram(name=res).save()
-        #target.category.connect(cat)
-        target.save()
-        rule = DiagramRule(**kwargs)
-        rule.save()
-        rule.key_diagram.connect(source)
-        rule.result_diagram.connect(target)
-        rule.save()
-        return rule
-        
     #@staticmethod
-    #def get_variable_mapping(source:Diagram, target:Diagram) -> dict:
-        #map = {}
+    #def our_create(key=None, res=None, **kwargs):
+        #if key is None:
+            #key = 'Key'
+        #if res is None:
+            #res = 'Result'
+            
+        ##cat = get_unique(Category, name='Any')    
+        #source = Diagram(name=key).save()
+        ##source.category.connect(cat)
+        #source.save()
+        #target = Diagram(name=res).save()
+        ##target.category.connect(cat)
+        #target.save()
+        #rule = DiagramRule(**kwargs)
+        #rule.save()
+        #rule.key_diagram.connect(source)
+        #rule.result_diagram.connect(target)
+        #rule.save()
+        #return rule
         
-        #for x in source.all_objects():
-            #template, vars = Variable.parse_template(text)
+    ##@staticmethod
+    ##def get_variable_mapping(source:Diagram, target:Diagram) -> dict:
+        ##map = {}
+        
+        ##for x in source.all_objects():
+            ##template, vars = Variable.parse_template(text)
                 
-    #def get_variable_template_regex(self, text:str) -> bidict:    
+    ##def get_variable_template_regex(self, text:str) -> bidict:    
 
 
 
@@ -615,7 +617,7 @@ class Proof(Arrow):
 model_str_to_class = {
     'Object' : Object,
     'Diagram' : Diagram,
-    'DiagramRule' : DiagramRule,
+    #'DiagramRule' : DiagramRule,
 }
 
 #MAX_MODEL_CLASS_NAME_LENGTH = max([len(x) for x in model_str_to_class.keys()])
