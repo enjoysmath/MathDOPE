@@ -6,8 +6,8 @@
 </iframe>
     
 <script type="text/javascript">
-    var save_diagram_url = "{% url 'save_diagram' diagram_name %}";
-    var load_diagram_url = "{% url 'load_diagram' diagram_name %}";
+    var save_diagram_url = "{% url 'save_diagram' slug %}";
+    var load_diagram_url = "{% url 'load_diagram' slug %}";
     var csrf_token = "{{ csrf_token }}";
     var messages_url = "{% url 'messages' %}";
     var clear_messages_url = "{% url 'clear_messages' %}";

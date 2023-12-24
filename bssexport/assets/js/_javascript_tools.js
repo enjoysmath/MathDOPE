@@ -7,6 +7,12 @@ function load_html_from_url(url, elem) {
     });   
 }
 
+function set_diagram_name(name)
+{
+    $("#diagram-name").text(name);
+}
+
+
 function display_django_messages() {
     messagesDiv = $(window.messages_tag_id);
     messagesDiv.empty();

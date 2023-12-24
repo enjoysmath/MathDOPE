@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-bs-theme="light">
+<html data-bs-theme="light" style="width: 100%;">
 
 <head>
     <meta charset="utf-8">
@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="/assets/css/cd_editor/navbar.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
-        <div class="container-fluid"><a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-weight: bold;padding: 0px;">MathDOPE</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="transform: scale(0.74);"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navcol-1" style="margin-bottom: 0px;">
+<body style="height: 100%;width: 100%;margin-right: -10px;">
+    <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="width: 100%;height: auto;max-height: auto;padding: 0px;">
+        <div class="container-fluid"><a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">MathDOPE</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="transform: scale(0.74);"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navcol-1" style="margin-bottom: 0px;margin-left: -137px;margin-top: 1px;">
                 <ul class="navbar-nav d-lg-flex me-auto justify-content-lg-end align-items-lg-center ms-auto" style="float: right;">
                     <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="save-button" type="button">Save</button></li>
                     <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="undo-button" type="button">Undo</button></li>
@@ -56,6 +56,7 @@
     <div id="django-messages-div" style="position:absolute; width:100%">
         <div dj-include="messages.html"></div>
     </div>
+    <h3 class="text-break text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;width: 100%;margin-right: 16px;margin-left: 6px;padding-right: 75px;padding-left: 68px;"><br><strong>ijoiajodfjiaodjiodfsoijaoijiadjioadfoijodfjoiadfjadfoijaodjioadj</strong><br><br></h3>
     <div dj-include="diagram_editor_include.html"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

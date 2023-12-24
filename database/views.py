@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
-from .models import get_model_by_name, get_unique, Diagram
+from .models import get_model_by_slug, get_unique, Diagram
 from django.contrib.auth.decorators import login_required, user_passes_test
 #from accounts.permissions import is_editor
 from dope.http_tools import get_posted_text, render_error
@@ -9,9 +9,10 @@ import json
 from django.db import OperationalError
 from django.core.exceptions import ObjectDoesNotExist
 from neomodel.properties import StringProperty
-from dope.settings import MAX_ATOMIC_LATEX_LENGTH, MAX_DIAGRAM_SLUG_LEN
+from dope.settings import MAX_ATOMIC_LATEX_LENGTH, MAX_slug_LEN
 from django.contrib import messages
 from .forms import CreateDiagramForm
+from django.utils.text import slugify
 
 
 #def user_login(request):
@@ -35,23 +36,29 @@ def create_diagram(request):
             form = CreateDiagramForm(data=request.POST)
             
             if form.is_valid():
-                diagram_slug = form.cleaned_data.get('diagram_slug')
+                diagram_name = form.cleaned_data.get('diagram_name')                   
+                slug = slugify(diagram_name)
                 
-            if 0 < len(diagram_slug) <= MAX_DIAGRAM_SLUG_LEN:               
-                diagram = Diagram.nodes.get_or_none(slug_name=diagram_slug, author_id=request.user.id)
-                
-                if diagram is None:
-                    diagram = Diagram.our_create(slug_name=diagram_slug, author_id=request.user.id)
+                if 0 < len(slug) <= MAX_slug_LEN:
                     
-                    return redirect('diagram_editor', diagram_slug)
+                    diagram = Diagram.nodes.get_or_none(slug=slug, author_id=request.user.id)
+                    
+                    if diagram is None:
+                        diagram = Diagram.our_create(slug=slug, author_id=request.user.id, name=diagram_name)
+                        
+                        return redirect('diagram_editor', slug)
+                    else:
+                        error_msg = 'A diagram by that name already exists.'                
                 else:
-                    error_msg = 'A diagram by that name already exists.'                
+                    if len(diagram_name) == 0:
+                        error_msg = 'A diagram name must be non-empty.'
+                    elif len() > MAX_slug_LEN:
+                        error_msg = f'A diagram name can be no longer than {MAX_slug_LEN} characters.'
             else:
-                if len(diagram_slug) == 0:
-                    error_msg = 'A diagram name must be non-empty.'
-                elif len(diagram_slug) > MAX_DIAGRAM_SLUG_LEN:
-                    error_msg = f'A diagram name can be no longer than {MAX_DIAGRAM_SLUG_LEN} characters.'                
+                # Form is not valid
+                error_msg = 'The form submitted is not valid.'
         else:
+            form = CreateDiagramForm()
             error_msg = None
             
     except Exception as e:
@@ -61,7 +68,7 @@ def create_diagram(request):
     if error_msg:
         messages.error(request, error_msg)
         
-    return render(request, 'create_diagram.html')                
+    return render(request, 'create_diagram.html', {'form': form})                
             
 
 #def get_model_by_uid(Model, uid:str):
@@ -174,17 +181,20 @@ def list_all_diagrams(request):
         
         
 @login_required
-def load_diagram(request, diagram_name:str):
+def load_diagram(request, slug:str):
     try:
         if request.method == 'GET':
             username = request.user.username
             
-            diagram = get_model_by_name(Diagram, diagram_name)
+            diagram = get_model_by_slug(Diagram, slug)
             
             if diagram.author_id != request.user.id:
                 raise OperationalError(f'The diagram with name "{diagram_name}" is only editable by its original author, {username}')                
                         
-            data = diagram.quiver_format()
+            data = {
+                'quiver': diagram.quiver_format(),
+                'diagram_name' : diagram.name,
+            }
             
             messages.success(request, "Loaded diagram from the database! ✨")
             return JsonResponse(data, safe=False)            
@@ -203,16 +213,16 @@ def load_diagram(request, diagram_name:str):
 
 
 @login_required   
-def save_diagram(request, diagram_name):
+def save_diagram(request, slug):
     try:
         if request.method != 'POST': #or not request.headers.get("contentType", "application/json; charset=utf-8"):
             raise OperationalError('You can only use the POST method to save to the database.')            
         username = request.user.username
         
-        diagram = get_model_by_name(Diagram, diagram_name)
+        diagram = get_model_by_slug(Diagram, slug)
 
         if diagram.author_id != request.user.id:
-            raise OperationalError(f'The diagram with name "{diagram_name}" is only editable by its original author, {username}')                
+            raise OperationalError(f'The diagram with name "{slug}" is only editable by its original author, {username}')                
                        
         body = request.body.decode('utf-8')
         

@@ -3,10 +3,10 @@ from django.contrib.auth.decorators import login_required
 from dope.http_tools import render_error
 
 @login_required
-def diagram_editor(request, diagram_name:str):
+def diagram_editor(request, slug:str):
     try:        
         context = {
-            'diagram_name': diagram_name,
+            'slug': slug,
         }
         return render(request, 'diagram_editor.html', context)
     

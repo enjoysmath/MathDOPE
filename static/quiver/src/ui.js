@@ -2646,7 +2646,9 @@ class UI {
         })
         .then(response => response.text())
         .then(data => {
-            ui.load_json_from_database(data);
+            const json_data = JSON.parse(data);
+            ui.load_json_from_database(json_data['quiver']);
+            parent.set_diagram_name(json_data['diagram_name']);
         })
         // .then(text => {
         //     alert(text);
@@ -2657,7 +2659,7 @@ class UI {
         })
         .then(() => {
             parent.display_django_messages();   
-        });        
+        });
     }
     
     save_diagram_action() {

@@ -1,9 +1,6 @@
 from django import forms
-from dope.settings import MAX_DIAGRAM_SLUG_LEN
+from dope.settings import MAX_DIAGRAM_NAME_LEN
 
-class CreateDiagramForm(forms.Form):
-    #def __init__(self, *args, **kwargs):
-        #super(forms.Form, self).__init__(*args, **kwargs)
-        
-    diagram_name = forms.SlugField(max_length=MAX_DIAGRAM_SLUG_LEN)
+class CreateDiagramForm(forms.Form):       
+    diagram_name = forms.CharField(max_length=MAX_DIAGRAM_NAME_LEN, min_length=1, strip=True)
     

@@ -1,5 +1,6 @@
 var cd_editor_window;
 
+
 $(document).ready(() => {
     $('#centre-view-button').on('click', () => {
         cd_editor_window.ui.centre_view_action();
@@ -24,7 +25,7 @@ $(document).ready(() => {
     }); 
       
     $(window).on('load', () => {
-        cd_editor_window.ui.load_diagram_action();    
+        cd_editor_window.ui.load_diagram_action();
     });    
 });
 

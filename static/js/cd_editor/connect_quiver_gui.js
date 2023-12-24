@@ -1,5 +1,10 @@
 var cd_editor_window;
 
+function set_diagram_name(name)
+{
+    $('#diagram-name').text(name);
+}
+
 $(document).ready(() => {
     $('#centre-view-button').on('click', () => {
         cd_editor_window.ui.centre_view_action();
@@ -24,7 +29,8 @@ $(document).ready(() => {
     }); 
       
     $(window).on('load', () => {
-        cd_editor_window.ui.load_diagram_action();    
+        const json_data = cd_editor_window.ui.load_diagram_action();
+        set_diagram_name(json_data['diagram_name']);
     });    
 });
 

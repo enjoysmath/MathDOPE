@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html data-bs-theme="light">
+<html data-bs-theme="light" style="width: 100%;">
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
@@ -14,10 +14,10 @@
   <link href='{% static "accounts/css/user_home_tabs.css" %}' rel="stylesheet"/>
   <link href='{% static "cd_editor/css/navbar.css" %}' rel="stylesheet"/>
  </head>
- <body>
-  <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
+ <body style="height: 100%;width: 100%;margin-right: -10px;">
+  <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="width: 100%;height: auto;max-height: auto;padding: 0px;">
    <div class="container-fluid">
-    <a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-weight: bold;padding: 0px;">
+    <a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">
      MathDOPE
     </a>
     <button class="navbar-toggler" data-bs-target="#navcol-1" data-bs-toggle="collapse" style="transform: scale(0.74);">
@@ -27,7 +27,7 @@
      <span class="navbar-toggler-icon">
      </span>
     </button>
-    <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navcol-1" style="margin-bottom: 0px;">
+    <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navcol-1" style="margin-bottom: 0px;margin-left: -137px;margin-top: 1px;">
      <ul class="navbar-nav d-lg-flex me-auto justify-content-lg-end align-items-lg-center ms-auto" style="float: right;">
       <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center">
        <button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="save-button" type="button">
@@ -142,6 +142,14 @@
   <div id="django-messages-div" style="position:absolute; width:100%">
    {% include 'messages.html' %}
   </div>
+  <h3 class="text-break text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;width: 100%;margin-right: 16px;margin-left: 6px;padding-right: 75px;padding-left: 68px;">
+   <br/>
+   <strong>
+    ijoiajodfjiaodjiodfsoijaoijiadjioadfoijodfjoiadfjadfoijaodjioadj
+   </strong>
+   <br/>
+   <br/>
+  </h3>
   {% include 'diagram_editor_include.html' %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
   </script>

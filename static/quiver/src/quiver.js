@@ -1308,7 +1308,7 @@ QuiverImportExport.database = new class extends QuiverImportExport {
             if (decoded === "") {
                 return quiver;
             }
-            input = JSON.parse(decoded);
+            input = string; // JSON.parse(decoded);
         } catch (_) {
             throw new Error("invalid base64 or JSON");
         }
