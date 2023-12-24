@@ -1,0 +1,57 @@
+#!wing
+#!version=10.0
+##################################################################
+# Wing project file                                              #
+##################################################################
+[project attributes]
+debug.launch-configs = (2,
+                        {'launch-WzK1BHvTw0sFzCSl': ({},
+        {'buildcmd': ('project',
+                      None),
+         'env': ('project',
+                 ['']),
+         'name': 'Run Django Server',
+         'pyexec': ('project',
+                    ''),
+         'pypath': ('project',
+                    []),
+         'pyrunargs': ('project',
+                       '-u'),
+         'runargs': 'runserver 127.0.0.1:8000',
+         'rundir': ('project',
+                    '')}),
+                         'launch-ZyweXmS6pP66sBXO': ({},
+        {'buildcmd': ('project',
+                      None),
+         'env': ('project',
+                 ['']),
+         'name': 'Django HTTPS Run',
+         'pyexec': ('project',
+                    ''),
+         'pypath': ('project',
+                    []),
+         'pyrunargs': ('project',
+                       '-u'),
+         'runargs': 'runserver_plus --cert-file cert.crt',
+         'rundir': ('project',
+                    '')})})
+proj.debug-sub-processes = True
+proj.directory-list = [{'dirloc': loc('.'),
+                        'excludes': (),
+                        'filter': '*',
+                        'include_hidden': False,
+                        'recursive': True,
+                        'watch_for_changes': True}]
+proj.file-type = 'shared'
+proj.launch-config = {loc('manage.py'): ('custom',
+        ('',
+         'launch-WzK1BHvTw0sFzCSl')),
+                      loc('theory/memgraph_hellow.py'): ('project',
+        ('',
+         'launch-WzK1BHvTw0sFzCSl')),
+                      loc('theory/models.py'): ('project',
+        ('',
+         'launch-WzK1BHvTw0sFzCSl'))}
+proj.main-file = loc('manage.py')
+testing.test-framework = {None: ':internal djangotest',
+                          loc('manage.py'): ':internal djangotest'}

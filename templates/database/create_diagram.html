@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html data-bs-theme="light">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
+  <title>
+   Home - Brand
+  </title>
+  <link href='{% static "bootstrap/css/bootstrap.min.css" %}' rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href='{% static "accounts/css/user_home_tabs.css" %}' rel="stylesheet"/>
+ </head>
+ <body>
+  <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
+   <div class="container">
+    <a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">
+     MathDOPE
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navcol-1" data-bs-toggle="collapse" style="transform: scale(0.74);">
+     <span class="visually-hidden">
+      Toggle navigation
+     </span>
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navcol-1">
+     <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+      </li>
+     </ul>
+     {% if request.user.is_authenticated %}
+     <a class="btn btn-primary" href="{% url 'user_home' %}" style="padding: 3px 6px;border-radius: 8px;margin: 4px;">
+      My Home
+     </a>
+     {% endif %}
+     {% include 'sign_inout_buttons.html' %}
+    </div>
+   </div>
+  </nav>
+  <header class="text-center text-white masthead" style='background: url({% static "accounts/img/pillars_of_creation.jpg" %}) center / cover repeat;height: 679px;padding-top: 20px;'>
+   <div class="card" style="min-width: auto;max-width: 800px;width: 90%;margin: auto;border-radius: 15px;background: rgba(255,255,255,0.48);color: var(--bs-blue);margin-right: auto;margin-bottom: auto;">
+    <div class="card-body" style="width: auto;max-width: auto;color: var(--bs-blue);min-width: auto;padding: 0;padding-bottom: 0;padding-right: 0;padding-top: 0;padding-left: 0;">
+     <h3 style="margin-top: 5px;color: #0047ff;">
+      Create a New Diagram
+     </h3>
+     <div id="django-messages-div">
+      {% include 'messages.html' %}
+     </div>
+     <form action="/database/create-diagram" method="post" style="width: auto;min-width: auto;max-width: auto;margin: 10px;margin-left: 10px;margin-bottom: 10px;margin-right: 10px;margin-top: 10px;">
+      {% include 'csrf_token.html' %}
+      <div class="row" style="margin: 0;width: auto;max-width: auto;">
+       <div class="col">
+        <input class="form-control-plaintext bg-white border-primary" id="diagram-name-input" maxlength="80" name="diagram-name-input" placeholder="Diagram Name" style="background: white;border-radius: 8px;padding: 6px;width: 100%;border-width: 2px;border-color: var(--bs-blue);" type="text"/>
+       </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+       <div class="col-3 offset-0 align-self-start" style="padding: 0;padding-right: 0;padding-left: 22px;width: auto;max-width: 100%;">
+        <button class="btn btn-primary" id="create-diagram-button" style="border-radius: 8px;padding-right: 12px;margin-left: 3px;" type="submit">
+         Create
+        </button>
+       </div>
+      </div>
+     </form>
+    </div>
+   </div>
+  </header>
+  <footer class="bg-light footer">
+   <div class="container">
+    <div class="row">
+     <div class="col-lg-6 text-center text-lg-start my-auto h-100">
+      <ul class="list-inline mb-2">
+       <li class="list-inline-item">
+        <a href='{% static "#" %}'>
+         About
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <span>
+         ⋅
+        </span>
+       </li>
+       <li class="list-inline-item">
+        <a href='{% static "#" %}'>
+         Contact
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <span>
+         ⋅
+        </span>
+       </li>
+       <li class="list-inline-item">
+        <a href='{% static "#" %}'>
+         Privacy Policy
+        </a>
+       </li>
+      </ul>
+      <p class="text-muted small mb-4 mb-lg-0">
+       © Brand 2021. All Rights Reserved.
+      </p>
+     </div>
+     <div class="col-lg-6 text-center text-lg-end my-auto h-100">
+      <ul class="list-inline mb-0">
+       <li class="list-inline-item">
+        <a href='{% static "#" %}'>
+         <i class="fa fa-facebook fa-2x fa-fw">
+         </i>
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href='{% static "#" %}'>
+         <i class="fa fa-twitter fa-2x fa-fw">
+         </i>
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href='{% static "#" %}'>
+         <i class="fa fa-instagram fa-2x fa-fw">
+         </i>
+        </a>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script src='{% static "js/bs-init.js" %}'>
+  </script>
+  <script src='{% static "js/_javascript_tools.js" %}'>
+  </script>
+ </body>
+</html>

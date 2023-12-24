@@ -1,0 +1,14 @@
+{% load static %}
+
+<iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+    src='{% static "quiver/src/index.html" %}' 
+    style="height:83vh;width:100%;border:none;overflow:hidden;">
+</iframe>
+    
+<script type="text/javascript">
+    var save_diagram_url = "{% url 'save_diagram' diagram_name %}";
+    var load_diagram_url = "{% url 'load_diagram' diagram_name %}";
+    var csrf_token = "{{ csrf_token }}";
+    var messages_url = "{% url 'messages' %}";
+    var clear_messages_url = "{% url 'clear_messages' %}";
+</script>

@@ -1,0 +1,22 @@
+{
+  "name": "Database Of Proofs Engine",
+  "description": "Database Of Proofs Engine web app",
+  "image": "heroku/python",
+  "repository": "",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "p_lram126h4^=5e80@h3)c_&%xebx_3)wx1@o3t$o0mi-4m%x"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}

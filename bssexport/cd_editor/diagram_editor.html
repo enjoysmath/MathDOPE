@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>DatabaseOfProofsEngine</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower&amp;display=swap">
+    <link rel="stylesheet" href="/assets/css/accounts/user_home_tabs.css">
+    <link rel="stylesheet" href="/assets/css/cd_editor/navbar.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
+        <div class="container-fluid"><a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-weight: bold;padding: 0px;">MathDOPE</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="transform: scale(0.74);"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navcol-1" style="margin-bottom: 0px;">
+                <ul class="navbar-nav d-lg-flex me-auto justify-content-lg-end align-items-lg-center ms-auto" style="float: right;">
+                    <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="save-button" type="button">Save</button></li>
+                    <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="undo-button" type="button">Undo</button></li>
+                    <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="redo-button" type="button">Redo</button></li>
+                    <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center"><button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="delete-button" type="button">Delete</button></li>
+                    <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+                        <div class="nav-item dropdown"><a class="active d-xl-flex align-items-xl-center btn btn-primary" aria-expanded="false" data-bs-toggle="dropdown" href="#">Select</a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="select-dropdown-menu" style="background: transparent;"><a class="dropdown-item d-lg-flex justify-content-lg-end dropdown-menu-end" href="#">
+                                    <div class="btn-group-vertical" role="group" style="border-style: none;"><button class="btn btn-primary" id="select-all-button" type="button">Select All</button><button class="btn btn-primary" id="deselect-all-button-1" type="button">&nbsp;Deselect</button></div>
+                                </a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+                        <div class="nav-item dropdown"><a class="active d-xl-flex align-items-xl-center btn btn-primary" aria-expanded="false" data-bs-toggle="dropdown" href="#">View</a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="view-dropdown-menu"><a class="dropdown-item d-lg-flex justify-content-lg-end" href="#">
+                                    <div class="btn-group-vertical" role="group"><button class="btn btn-primary" type="button">Button</button><button class="btn btn-primary" type="button">Button</button><button class="btn btn-primary" type="button">Button</button><button class="btn btn-primary" type="button">Button</button></div>
+                                </a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+                        <div class="nav-item dropdown"><a class="active d-xl-flex align-items-xl-center btn btn-primary" aria-expanded="false" data-bs-toggle="dropdown" href="#">More</a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start"><a class="dropdown-item d-lg-flex justify-content-lg-end" href="#">
+                                    <div class="btn-group-vertical" role="group"><button class="btn btn-primary" type="button">Button</button><button class="btn btn-primary" type="button">Button</button><button class="btn btn-primary" type="button">Button</button><button class="btn btn-primary" type="button">Button</button></div>
+                                </a></div>
+                        </div>
+                    </li>
+                    <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+                        <div class="nav-item dropdown"><a class="active d-xl-flex align-items-xl-center btn btn-primary" aria-expanded="false" data-bs-toggle="dropdown" href="#">Math</a>
+                            <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="math-dropdown-menu"><a class="dropdown-item d-lg-flex justify-content-lg-end" href="#"></a>
+                                <div class="form-check form-switch form-switch"><input class="form-check-input" type="checkbox" id="written-language-switch" role="switch"><label class="form-check-label text-nowrap" for="written-language-switch">English Output</label></div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="django-messages-div" style="position:absolute; width:100%">
+        <div dj-include="messages.html"></div>
+    </div>
+    <div dj-include="diagram_editor_include.html"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/bs-init.js"></script>
+    <script src="/assets/js/_javascript_tools.js"></script>
+    <script src="/assets/js/cd_editor/connect_quiver_gui.js"></script>
+</body>
+
+</html>

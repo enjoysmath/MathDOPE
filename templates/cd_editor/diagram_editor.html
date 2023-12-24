@@ -1,0 +1,157 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html data-bs-theme="light">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
+  <title>
+   DatabaseOfProofsEngine
+  </title>
+  <link href='{% static "bootstrap/css/bootstrap.min.css" %}' rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"/>
+  <link href='{% static "accounts/css/user_home_tabs.css" %}' rel="stylesheet"/>
+  <link href='{% static "cd_editor/css/navbar.css" %}' rel="stylesheet"/>
+ </head>
+ <body>
+  <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
+   <div class="container-fluid">
+    <a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-weight: bold;padding: 0px;">
+     MathDOPE
+    </a>
+    <button class="navbar-toggler" data-bs-target="#navcol-1" data-bs-toggle="collapse" style="transform: scale(0.74);">
+     <span class="visually-hidden">
+      Toggle navigation
+     </span>
+     <span class="navbar-toggler-icon">
+     </span>
+    </button>
+    <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navcol-1" style="margin-bottom: 0px;">
+     <ul class="navbar-nav d-lg-flex me-auto justify-content-lg-end align-items-lg-center ms-auto" style="float: right;">
+      <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center">
+       <button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="save-button" type="button">
+        Save
+       </button>
+      </li>
+      <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center">
+       <button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="undo-button" type="button">
+        Undo
+       </button>
+      </li>
+      <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center">
+       <button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="redo-button" type="button">
+        Redo
+       </button>
+      </li>
+      <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center">
+       <button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center" id="delete-button" type="button">
+        Delete
+       </button>
+      </li>
+      <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+       <div class="nav-item dropdown">
+        <a aria-expanded="false" class="active d-xl-flex align-items-xl-center btn btn-primary" data-bs-toggle="dropdown" href='{% static "#" %}'>
+         Select
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="select-dropdown-menu" style="background: transparent;">
+         <a class="dropdown-item d-lg-flex justify-content-lg-end dropdown-menu-end" href='{% static "#" %}'>
+          <div class="btn-group-vertical" role="group" style="border-style: none;">
+           <button class="btn btn-primary" id="select-all-button" type="button">
+            Select All
+           </button>
+           <button class="btn btn-primary" id="deselect-all-button-1" type="button">
+            Deselect
+           </button>
+          </div>
+         </a>
+        </div>
+       </div>
+      </li>
+      <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+       <div class="nav-item dropdown">
+        <a aria-expanded="false" class="active d-xl-flex align-items-xl-center btn btn-primary" data-bs-toggle="dropdown" href='{% static "#" %}'>
+         View
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="view-dropdown-menu">
+         <a class="dropdown-item d-lg-flex justify-content-lg-end" href='{% static "#" %}'>
+          <div class="btn-group-vertical" role="group">
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+          </div>
+         </a>
+        </div>
+       </div>
+      </li>
+      <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+       <div class="nav-item dropdown">
+        <a aria-expanded="false" class="active d-xl-flex align-items-xl-center btn btn-primary" data-bs-toggle="dropdown" href='{% static "#" %}'>
+         More
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start">
+         <a class="dropdown-item d-lg-flex justify-content-lg-end" href='{% static "#" %}'>
+          <div class="btn-group-vertical" role="group">
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+           <button class="btn btn-primary" type="button">
+            Button
+           </button>
+          </div>
+         </a>
+        </div>
+       </div>
+      </li>
+      <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
+       <div class="nav-item dropdown">
+        <a aria-expanded="false" class="active d-xl-flex align-items-xl-center btn btn-primary" data-bs-toggle="dropdown" href='{% static "#" %}'>
+         Math
+        </a>
+        <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="math-dropdown-menu">
+         <a class="dropdown-item d-lg-flex justify-content-lg-end" href='{% static "#" %}'>
+         </a>
+         <div class="form-check form-switch form-switch">
+          <input class="form-check-input" id="written-language-switch" role="switch" type="checkbox"/>
+          <label class="form-check-label text-nowrap" for="written-language-switch">
+           English Output
+          </label>
+         </div>
+        </div>
+       </div>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </nav>
+  <div id="django-messages-div" style="position:absolute; width:100%">
+   {% include 'messages.html' %}
+  </div>
+  {% include 'diagram_editor_include.html' %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+  </script>
+  <script src='{% static "js/bs-init.js" %}'>
+  </script>
+  <script src='{% static "js/_javascript_tools.js" %}'>
+  </script>
+  <script src='{% static "cd_editor/js/connect_quiver_gui.js" %}'>
+  </script>
+ </body>
+</html>

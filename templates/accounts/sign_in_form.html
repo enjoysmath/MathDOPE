@@ -1,0 +1,9 @@
+{% load django_bootstrap5 %}
+{% bootstrap_messages %}
+
+<h2> Account Sign In </h2>
+<form method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% bootstrap_button button_type="submit" content="Sign In" %}    
+</form>
