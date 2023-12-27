@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower&amp;display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="/assets/css/accounts/user_home_tabs.css">
 <link rel="stylesheet" href="{% static 'quiver/src/KaTeX/katex.min.css' %}">
 <script defer src="{% static 'quiver/src/KaTeX/katex.min.js' %}"></script>
@@ -36,7 +37,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
-        <div class="container"><a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">MathDOPE<img src="/assets/img/android-chrome-192x192.png" width="36" height="36" style="margin-left: 12px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="transform: scale(0.74);"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand bounce animated" href="{% url 'user_home' %}" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">MathDOPE<img src="/assets/img/android-chrome-192x192.png" width="36" height="36" style="margin-bottom: 5px;padding-left: 0px;margin-left: -6px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="transform: scale(0.74);"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"></li>
@@ -50,7 +51,7 @@
             <div class="card-body" style="width: auto;max-width: auto;color: var(--bs-blue);min-width: auto;">
                 <h1 style="font-size: 27px;">Edit Your Account</h1>
                 <p>Please use the following form to edit your account:</p>
-                <div id="django-messages-div" style="width:auto">
+                <div id="django-messages-div">
                     <div dj-include="messages.html"></div>
                 </div>
                 <form style="width: auto;min-width: auto;max-width: auto;margin: 20px;" dj-include="edit_profile_form.html">

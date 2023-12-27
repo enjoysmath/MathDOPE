@@ -473,7 +473,7 @@ being. */
     position: fixed;
     left: 50%; height: 32px;
     /* Position 8px above the global panel. */
-    bottom: calc(8px + 4px);
+    bottom: 16%;
     width: 80%;
     /*min-width: 560px;*/
     transform: translateX(-50%);
@@ -488,7 +488,7 @@ being. */
 
 .label-input-container.hidden {
     /* We use `translate` instead of `bottom` to avoid continually performing layout. */
-    transform: translate(-50%, calc(16pt + 4px * 2 + 16px + 8px + 46px));
+    transform: translate(-50%, 600%);
 }
 
 .ui.connect .label-input-container {

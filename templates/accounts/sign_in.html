@@ -20,6 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
   <link href='{% static "accounts/css/user_home_tabs.css" %}' rel="stylesheet"/>
   <link href="{% static 'quiver/src/KaTeX/katex.min.css' %}" rel="stylesheet"/>
   <script defer="" src="{% static 'quiver/src/KaTeX/katex.min.js' %}">
@@ -41,9 +42,9 @@
  <body>
   <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
    <div class="container">
-    <a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">
+    <a class="navbar-brand bounce animated" href="{% url 'user_home' %}" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">
      MathDOPE
-     <img height="36" src='{% static "img/android-chrome-192x192.png" %}' style="margin-left: 12px;" width="36"/>
+     <img height="36" src='{% static "img/android-chrome-192x192.png" %}' style="margin-bottom: 5px;padding-left: 0px;margin-left: -6px;" width="36"/>
     </a>
     <button class="navbar-toggler" data-bs-target="#navcol-1" data-bs-toggle="collapse" style="transform: scale(0.74);">
      <span class="visually-hidden">
@@ -68,12 +69,12 @@
     </div>
    </div>
   </nav>
-  <div id="django-messages-div">
-   {% include 'messages.html' %}
-  </div>
   <header class="text-center text-white masthead" style='background: url({% static "accounts/img/pillars_of_creation.jpg" %}) center / cover repeat;height: 679px;padding: 20px 0px;'>
    <div class="card" style="min-width: auto;max-width: 500px;width: auto;margin: auto;border-radius: 15px;background: rgba(255,255,255,0.48);color: var(--bs-blue);">
     <div class="card-body" style="width: auto;max-width: auto;color: var(--bs-blue);min-width: auto;">
+     <div id="django-messages-div">
+      {% include 'messages.html' %}
+     </div>
      {% include 'sign_in_form.html' %}
     </div>
    </div>

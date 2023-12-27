@@ -13,6 +13,7 @@ from dope.settings import MAX_ATOMIC_LATEX_LENGTH, MAX_slug_LEN
 from django.contrib import messages
 from .forms import CreateDiagramForm
 from django.utils.text import slugify
+from neo4j.exceptions import ServiceUnavailable
 
 
 #def user_login(request):
@@ -61,7 +62,11 @@ def create_diagram(request):
             form = CreateDiagramForm()
             error_msg = None
             
+    except ServiceUnavailable as e:
+        error_msg = f'Create Diagram Erruption 🌋: The neo4j graph database is down or has connectivity issues.'
+        
     except Exception as e:
+        error_msg = f'{full_qualname(e)}: {e}'
         if __debug__:
             raise e
         

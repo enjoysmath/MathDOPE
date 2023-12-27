@@ -19,6 +19,7 @@
   <link href='{% static "bootstrap/css/bootstrap.min.css" %}' rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
   <link href='{% static "accounts/css/user_home_tabs.css" %}' rel="stylesheet"/>
   <link href='{% static "cd_editor/css/navbar.css" %}' rel="stylesheet"/>
   <link href="{% static 'quiver/src/KaTeX/katex.min.css' %}" rel="stylesheet"/>
@@ -38,12 +39,12 @@
     });
   </script>
  </head>
- <body style="height: 100%;width: 100%;margin-right: -10px;">
+ <body style="height:100vh;max-height:100%;width:100vw;max-width:100%;border:none;overflow:hidden;x-overflow:hidden">
   <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="width: 100%;height: auto;max-height: auto;padding: 0px;">
    <div class="container-fluid">
-    <a class="navbar-brand" href="/" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">
+    <a class="navbar-brand bounce animated" href="{% url 'user_home' %}" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">
      MathDOPE
-     <img height="36" src='{% static "img/android-chrome-192x192.png" %}' style="margin-left: 12px;" width="36"/>
+     <img height="36" src='{% static "img/android-chrome-192x192.png" %}' style="margin-bottom: 5px;padding-left: 0px;margin-left: -6px;" width="36"/>
     </a>
     <button class="navbar-toggler" data-bs-target="#navcol-1" data-bs-toggle="collapse" style="transform: scale(0.74);">
      <span class="visually-hidden">
@@ -75,11 +76,11 @@
        </button>
       </li>
       <li class="nav-item text-center d-grid float-none d-lg-flex justify-content-lg-end align-items-lg-center">
-       <div class="nav-item dropdown">
-        <a aria-expanded="false" class="active d-xl-flex align-items-xl-center btn btn-primary" data-bs-toggle="dropdown" href='{% static "#" %}'>
+       <div class="nav-item dropdown show">
+        <a aria-expanded="true" class="active d-xl-flex align-items-xl-center btn btn-primary" data-bs-toggle="dropdown" href='{% static "#" %}'>
          Select
         </a>
-        <div class="dropdown-menu dropdown-menu-dark dropdown-menu-start" id="select-dropdown-menu" style="background: transparent;">
+        <div class="dropdown-menu dropdown-menu-dark show dropdown-menu-start" data-bs-popper="none" id="select-dropdown-menu" style="background: transparent;">
          <a class="dropdown-item d-lg-flex justify-content-lg-end dropdown-menu-end" href='{% static "#" %}'>
           <div class="btn-group-vertical" role="group" style="border-style: none;">
           </div>
@@ -161,10 +162,9 @@
   <div id="django-messages-div" style="position:absolute; width:100%">
    {% include 'messages.html' %}
   </div>
-  <h3 class="text-break fw-light text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;width: 100%;margin-right: 16px;margin-left: 6px;padding-right: 75px;padding-left: 68px;font-family: sans-serif;">
+  <h3 class="text-break fw-light text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;width: 100%;margin-right: 16px;margin-left: 6px;padding-right: 75px;padding-left: 68px;font-family: sans-serif;height: auto;">
    <br/>
-   <br/>
-   <br/>
+   gggggggggggggggggggggggggggggggggggggggggggggggggggggg
   </h3>
   {% include 'diagram_editor_include.html' %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
