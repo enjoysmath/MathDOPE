@@ -13,7 +13,7 @@
 @media (max-width: 991px) {
   .btn.btn-primary.text-nowrap.text-center.d-flex.float-end.justify-content-lg-end.align-items-lg-center {
     font-size: smaller;
-    padding: 3px;
+    padding: 5px;
     border-radius: 8px;
     margin: 3px;
   }
@@ -47,9 +47,10 @@
   min-width: auto;
   margin-right: 3px;
   background: rgba(0,123,255,0.71);
-  border-radius: 8px;
+  border-radius: 5px;
   border-style: none;
-  padding-top: 3px;
+  padding-bottom: 12px;
+  padding-top: 13px;
 }
 
 @media (min-width: 992px) {
@@ -145,5 +146,59 @@
   color: #fff;
   background-color: rgb(0,123,255);
   border-color: #007bff;
+}
+
+.dropdown-menu {
+  padding-top: 10px;
+}
+
+#main-navbar > a {
+}
+
+@media (max-width: 991px) {
+  .nav-item {
+    margin: 3px;
+    padding: 3px;
+  }
+}
+
+.navbar .nav-item .dropdown-toggle a {
+  background-color: var(--bs-primary);
+}
+
+@media (min-width: 992px) {
+  .navbar-main-link {
+    margin: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-main-link {
+    margin: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-main-link {
+    margin: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  #more-dropdown {
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-main-link {
+    padding: 3px;
+    margin: 3px;
+  }
+}
+
+@media (max-width: 991px) {
+  .main-nav-btn-text {
+    font-size: 0;
+  }
 }
 
