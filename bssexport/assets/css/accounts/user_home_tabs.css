@@ -1,7 +1,4 @@
-.nav-pills .nav-link {
-  background: none;
-  border: 0;
-  border-radius: .5rem;
-  margin: 2px;
+.navbar-main-link {
+  box-shadow: 3px 6px 18px 0px var(--bs-dark-text-emphasis);
 }
 

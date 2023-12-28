@@ -11,7 +11,7 @@ $(document).ready(() => {
     $('#select-all-button').on('click', () => {
         cd_editor_window.ui.select_all_action();
     });
-    $('#deselect-all-button').on('click', () => {
+    $('#select-none-button').on('click', () => {
         cd_editor_window.ui.deselect_all_action();
     });
     $('#delete-button').on('click', () => {
