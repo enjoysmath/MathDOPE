@@ -81,6 +81,9 @@ $(document).ready(() => {
     $("#arrow-label-position-input").on('input', () => {
         cd_editor_window.ui.label_position_spinner_action($("#arrow-label-position-input").val());
     });
+    $("#arrow-offset-input").on('input', () => {
+        cd_editor_window.ui.arrow_offset_spinner_action($("#arrow-offset-input").val());
+    });
       
     $(window).on('load', () => {        
         cd_editor_window.ui.load_diagram_action();

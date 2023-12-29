@@ -2798,6 +2798,33 @@ class UI {
             }],
         );
     }
+
+    arrow_offset_spinner_action(value)
+    {
+        const property = "offset";
+
+        this.panel.unqueue_selected(ui);
+
+        ui.history.add_or_modify_previous(
+            ui,
+            [property, ui.selection],
+            [{
+                kind: property,
+                value,
+                cells: Array.from(ui.selection)
+                    .filter(cell => cell.is_edge())
+                    .map((edge) => ({
+                        edge,
+                        from: property !== "length" ? edge.options[property]
+                            : [
+                                edge.options.shorten.source,
+                                100 - edge.options.shorten.target
+                            ],
+                        to: value,
+                    })),
+            }],
+        );   
+    }
     
     /// Centre the view with respect to the selection, or the entire quiver if no cells are
     /// selected.

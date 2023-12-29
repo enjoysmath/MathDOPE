@@ -568,9 +568,9 @@ being. */
     border-radius: 4px;
 }
 
-/*.panel {*/
-    /*display: none;*/
-/*}*/
+.panel {	/* MathDOPE - disable original Quiver Panel */
+    display: none;
+}
 
 .command .label-input-container .colour-indicator {
     display: none;

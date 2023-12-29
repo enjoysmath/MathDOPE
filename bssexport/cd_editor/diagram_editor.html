@@ -36,7 +36,7 @@
 </script>
 </head>
 
-<body style="height: 100vh;max-height: 100%;width: 100vw;max-width: 100%;border: none;overflow: hidden;">
+<body style="height: 100vh;max-height: 100%;width: 100vw;max-width: 100%;border: none;padding: 0;overflow: hidden;">
     <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" id="main-navbar" style="width: 100%;height: auto;max-height: auto;padding: 0px;">
         <div class="container-fluid"><a class="navbar-brand bounce animated" href="{% url 'user_home' %}" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-weight: bold;margin: 0px;padding: 0px;">MathDOPE&nbsp;<img src="/assets/img/android-chrome-192x192.png" width="36" height="36" style="margin-bottom: 5px;padding-left: 0px;margin-left: -6px;"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1" style="transform: scale(0.74);padding-left: 8px;margin-right: -1px;padding-right: 12px;margin-top: 5px;padding-top: 7px;padding-bottom: 7px;margin-bottom: 0px;border-radius: 11px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon" style="margin-right: -4px;"></span></button>
             <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end align-items-lg-center" id="navcol-1" style="margin-bottom: 0px;margin-left: -137px;margin-top: 1px;height: 53px;">
@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" role="dialog" tabindex="-1" id="arrow-settings-modal" style="margin-top: 48px;opacity: 0.75;background-color:translucent">
+    <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" role="dialog" tabindex="-1" id="arrow-settings-modal" style="margin: auto;margin-top: auto;opacity: 0.75;background-color: translucent;padding: 0;">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="border-width: 0px;background: rgba(40,167,45,0.57);">
@@ -104,7 +104,7 @@
                 <div class="modal-header" style="border-width: 0px;background: rgba(40,167,45,0.57);">
                     <h4 class="modal-title">Arrow Position</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body flex-wrap" style="height: auto;width: auto;padding-top: 0px;background: rgba(40,167,45,0.57);"><button class="btn btn-primary modal-button" id="reverse-arrows-button" type="button">Reverse Arrows</button><button class="btn btn-primary modal-button" id="flip-arrows-button" type="button">Flip Arrows</button></div>
+                <div class="modal-body flex-wrap" style="height: auto;width: auto;background: rgba(40,167,45,0.57);padding-top: 16px;"><button class="btn btn-primary modal-button" id="reverse-arrows-button" type="button">Reverse Arrows</button><button class="btn btn-primary modal-button" id="flip-arrows-button" type="button">Flip Arrows</button><label class="form-label d-inline-flex align-items-center align-items-sm-center arrow-label-field-label" id="arrow-offset-input-label" style="margin-right: -3px;padding-right: 10px;">Offset:<input type="number" id="arrow-offset-input" class="arrow-label-number-input" max="5" min="-5" step="1" value="0"></label></div>
                 <div class="modal-footer" style="border-width: 0px;background: rgba(40,167,45,0.57);"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
             </div>
         </div>
