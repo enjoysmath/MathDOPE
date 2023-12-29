@@ -5148,6 +5148,7 @@ class Panel {
 
             let [corners, inverse_corners] = [0, 0];
 
+
             // Collect the consistent and varying input values.
             for (const cell of ui.selection) {
                 // Options applying to all cells. Technically, these are no longer under the
@@ -5249,10 +5250,17 @@ class Panel {
                         }
                         break;
                     case "{label_position}":
+                        parent.set_arrow_label_position(value !== null ? value : 50);
                         this.sliders.get(property).thumbs[0].set_value(value !== null ? value : 50);
                         break;
                     case "{offset}":
+                        parent.set_arrow_offset(value !== null ? value : 0);
+                        this.sliders.get(property).thumbs[0].set_value(value !== null ? value : 0);
+                        break;
                     case "{curve}":
+                        parent.set_arrow_curvature(value !== null ? value : 0);
+                        this.sliders.get(property).thumbs[0].set_value(value !== null ? value : 0);
+                        break;
                     case "{level}":
                         this.sliders.get(property).thumbs[0].set_value(value !== null ? value : 0);
                         break;

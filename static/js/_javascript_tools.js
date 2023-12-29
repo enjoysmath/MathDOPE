@@ -7,6 +7,21 @@ function load_html_from_url(url, elem) {
     });   
 }
 
+function set_arrow_curvature(value)
+{
+    $("#arrow-curvature-input").val(value);
+}
+
+function set_arrow_offset(value)
+{
+    $("#arrow-offset-input").val(value);
+}
+
+function set_arrow_label_position(value)
+{
+    $("#arrow-label-position-input").val(value);
+}
+
 function set_diagram_name(name)
 {
     const name_elem = $("#diagram-name");
