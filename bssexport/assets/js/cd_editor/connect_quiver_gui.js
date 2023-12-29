@@ -79,11 +79,42 @@ $(document).ready(() => {
         cd_editor_window.ui.flip_arrows_action();
     });    
     $("#arrow-label-position-input").on('input', () => {
-        cd_editor_window.ui.label_position_spinner_action($("#arrow-label-position-input").val());
+        cd_editor_window.ui.label_position_action($("#arrow-label-position-input").val());
     });
     $("#arrow-offset-input").on('input', () => {
-        cd_editor_window.ui.arrow_offset_spinner_action($("#arrow-offset-input").val());
+        cd_editor_window.ui.arrow_offset_action($("#arrow-offset-input").val());
     });
+    $("#arrow-tail-shorten").on('change', () => {
+        var current_val = parseInt($("#arrow-tail-shorten").val());
+        const head_val = parseInt($("#arrow-head-shorten").val());
+        
+        if (current_val + 20 > head_val) {
+            current_val = parseInt($("#arrow-tail-shorten").val(Math.max(head_val - 20, 0)));
+        }
+        
+        $("#arrow-head-shorten").attr({
+            "min" : Math.min(current_val + 20, 100)
+        });        
+        cd_editor_window.ui.arrow_tail_shorten_action(current_val, head_val);
+    });
+    $("#arrow-head-shorten").on('change', () => {
+        var current_val = parseInt($("#arrow-head-shorten").val());
+        const tail_val = parseInt($("#arrow-tail-shorten").val());
+        
+        if (current_val - 20 < tail_val) {
+            current_val = parseInt($("#arrow-head-shorten").val(Math.min(tail_val + 20, 100)));
+        }
+        
+        $("#arrow-tail-shorten").attr({
+            "max" : Math.max(current_val - 20, 0)
+        });
+        
+        cd_editor_window.ui.arrow_tail_shorten_action(tail_val, current_val);
+    });
+    $("#arrow-curvature-input").on('input', () => {
+        cd_editor_window.ui.arrow_curvature_action($("#arrow-curvature-input").val());
+    });
+    
       
     $(window).on('load', () => {        
         cd_editor_window.ui.load_diagram_action();

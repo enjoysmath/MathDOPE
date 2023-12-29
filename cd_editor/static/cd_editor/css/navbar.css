@@ -181,8 +181,9 @@
 @media (min-width: 992px) {
   .navbar-main-link {
     margin: auto;
-    height: 37px;
+    height: 40px;
     margin-right: 7px;
+    margin-top: -1px;
   }
 }
 
@@ -225,10 +226,11 @@
 @media (min-width: 992px) {
   #more-dropdown-link {
     padding: 8px;
-    margin-top: -8px;
+    margin-top: -9px;
     margin-bottom: -6px;
     margin-right: 7px;
     margin-left: 3px;
+    height: 40px;
   }
 }
 
@@ -276,6 +278,7 @@
 
 .navbar-main-link {
   box-shadow: 3px 6px 18px 0px var(--bs-dark-text-emphasis);
+  border-color: var(--bs-link-hover-color);
 }
 
 .dropdown-menu {
@@ -362,19 +365,23 @@
   }
 }
 
-.arrow-label-number-input {
+.arrow-number-input {
   width: auto;
-  border-radius: 7px;
+  height: auto;
+  border-radius: 11px;
   margin-left: 8px;
-  height: 43px;
-  font-size: 24pt;
-  border-width: 0px;
-  border-color: var(--bs-teal);
+  font-size: 22pt;
   padding-left: 10px;
   max-width: 200px;
+  outline: none;
+  border: 1.5px solid #ebff03;
 }
 
-.arrow-label-field-label {
+.arrow-field-label {
   width: auto;
+}
+
+#more-dropdown-link {
+  border: 1px solid var(--bs-btn-bg);
 }
 

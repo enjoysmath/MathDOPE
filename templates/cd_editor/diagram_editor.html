@@ -131,7 +131,7 @@
        </div>
       </li>
       <li class="nav-item d-lg-flex justify-content-lg-end align-items-lg-center" style="padding-right: 0px;padding-bottom: 0px;padding-top: 0px;margin-left: -3px;">
-       <button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center navbar-main-link" data-bs-target="#arrow-settings-modal" data-bs-toggle="modal" data-bss-hover-animate="pulse" id="arrow-gear-button" style="background: var(--bs-success);border-width: 1px;border-color: var(--bs-teal);" type="button">
+       <button class="btn btn-primary text-nowrap text-center d-flex float-end justify-content-lg-end align-items-lg-center navbar-main-link" data-bs-target="#arrow-settings-modal" data-bs-toggle="modal" data-bss-hover-animate="pulse" id="arrow-gear-button" style="background: orange;border-width: 1px;border-color: var(--bs-orange);" type="button">
         <svg class="bi bi-gear navbar-main-icon" fill="currentColor" height="1em" style="font-size: 35px;" viewbox="0 0 16 16" width="1em" xmlns="http://www.w3.org/2000/svg">
          <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z">
          </path>
@@ -180,7 +180,7 @@
     </div>
    </div>
   </div>
-  <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" id="arrow-settings-modal" role="dialog" style="margin: auto;margin-top: auto;opacity: 0.75;background-color: translucent;padding: 0;" tabindex="-1">
+  <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" id="arrow-settings-modal" role="dialog" style="margin: auto;margin-top: auto;opacity: 0.75;padding: 0;" tabindex="-1">
    <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
      <div class="modal-header" style="border-width: 0px;background: rgba(40,167,45,0.57);">
@@ -190,11 +190,11 @@
       <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
       </button>
      </div>
-     <div class="modal-body flex-wrap" style="height: auto;width: auto;padding-top: 0px;background: rgba(40,167,45,0.57);">
+     <div class="modal-body flex-wrap" style="height: auto;width: auto;background: rgba(40,167,45,0.57);padding-top: 15px;">
       <button class="btn btn-primary modal-button" data-bs-target="#arrow-position-modal" data-bs-toggle="modal" id="arrow-position-button" type="button">
        Arrow Position
       </button>
-      <button class="btn btn-primary modal-button" id="select-all-button-5" type="button">
+      <button class="btn btn-primary modal-button" data-bs-target="#arrow-shape-modal" data-bs-toggle="modal" id="select-all-button-5" type="button">
        Arrow Shape
       </button>
       <button class="btn btn-primary modal-button" data-bs-target="#arrow-label-position-modal" data-bs-toggle="modal" id="select-all-button-4" type="button">
@@ -232,9 +232,9 @@
       <button class="btn btn-primary modal-button" id="flip-arrows-button" type="button">
        Flip Arrows
       </button>
-      <label class="form-label d-inline-flex align-items-center align-items-sm-center arrow-label-field-label" id="arrow-offset-input-label" style="margin-right: -3px;padding-right: 10px;">
+      <label class="form-label d-inline-flex align-items-center align-items-sm-center arrow-field-label" id="arrow-offset-input-label" style="margin-right: -3px;padding-right: 10px;">
        Offset:
-       <input class="arrow-label-number-input" id="arrow-offset-input" max="5" min="-5" step="1" type="number" value="0"/>
+       <input class="arrow-label-number-input" id="arrow-offset-input" max="5" min="-5" step="1" style="padding-top: 0px;margin-bottom: -1px;padding-bottom: 0px;" type="number" value="0"/>
       </label>
      </div>
      <div class="modal-footer" style="border-width: 0px;background: rgba(40,167,45,0.57);">
@@ -245,7 +245,7 @@
     </div>
    </div>
   </div>
-  <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" id="arrow-label-position-modal" role="dialog" style="display:none;margin-top: 48px;opacity: 0.75;background-color:translucent" tabindex="-1">
+  <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" id="arrow-label-position-modal" role="dialog" style="display: none;margin-top: 48px;opacity: 0.75;background-color: translucent;" tabindex="-1">
    <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
      <div class="modal-header" style="border-width: 0px;background: rgba(40,167,45,0.57);">
@@ -256,9 +256,33 @@
       </button>
      </div>
      <div class="modal-body flex-wrap" style="height: auto;width: auto;background: rgba(40,167,45,0.57);padding-top: 15px;">
-      <label class="form-label d-inline-flex align-items-center align-items-sm-center arrow-label-field-label" style="margin-right: -3px;padding-right: 10px;">
+      <label class="form-label d-inline-flex align-items-center align-items-sm-center arrow-field-label" style="margin-right: -3px;padding-right: 10px;">
        Position:
-       <input class="arrow-label-number-input" id="arrow-label-position-input" max="100" min="0" step="10" type="number" value="50"/>
+       <input class="arrow-number-input" id="arrow-label-position-input" max="100" min="0" step="10" type="number" value="50"/>
+      </label>
+     </div>
+     <div class="modal-footer" style="border-width: 0px;background: rgba(40,167,45,0.57);">
+      <button class="btn btn-light" data-bs-dismiss="modal" type="button">
+       Close
+      </button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" id="arrow-shape-modal" role="dialog" style="display: none;margin-top: 48px;opacity: 0.75;background-color: translucent;" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="modal-header" style="border-width: 0px;background: rgba(40,167,45,0.57);">
+      <h4 class="modal-title">
+       Arrow Shape
+      </h4>
+      <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+      </button>
+     </div>
+     <div class="modal-body flex-wrap" style="height: auto;width: auto;background: rgba(40,167,45,0.57);padding-top: 15px;">
+      <label class="form-label d-inline-flex align-items-center align-items-sm-center arrow-field-label" style="margin-right: -3px;padding-right: 10px;">
+       Curvature:
+       <input class="arrow-number-input" id="arrow-curvature-input" max="5" min="-5" step="1" type="number" value="0"/>
       </label>
      </div>
      <div class="modal-footer" style="border-width: 0px;background: rgba(40,167,45,0.57);">

@@ -2772,7 +2772,7 @@ class UI {
         }], true);
     }
 
-    label_position_spinner_action(value)
+    label_position_action(value)
     {
         const property = "label_position";
 
@@ -2799,7 +2799,7 @@ class UI {
         );
     }
 
-    arrow_offset_spinner_action(value)
+    arrow_offset_action(value)
     {
         const property = "offset";
 
@@ -2824,6 +2824,61 @@ class UI {
                     })),
             }],
         );   
+    }
+
+    arrow_curvature_action(value)
+    {
+        const property = "curve";
+
+        this.panel.unqueue_selected(ui);
+
+        ui.history.add_or_modify_previous(
+            ui,
+            [property, ui.selection],
+            [{
+                kind: property,
+                value,
+                cells: Array.from(ui.selection)
+                    .filter(cell => cell.is_edge())
+                    .map((edge) => ({
+                        edge,
+                        from: property !== "length" ? edge.options[property]
+                            : [
+                                edge.options.shorten.source,
+                                100 - edge.options.shorten.target
+                            ],
+                        to: value,
+                    })),
+            }],
+        );   
+    }
+
+    arrow_tail_shorten_action(tail_shorten, head_shorten)
+    {
+        const property = "length";
+        const value = [tail_shorten, head_shorten];
+        // Enact the effect of the slider.
+        this.panel.unqueue_selected(ui);
+
+        ui.history.add_or_modify_previous(
+            ui,
+            [property, ui.selection],
+            [{
+                kind: "property",
+                value,
+                cells: Array.from(ui.selection)
+                    .filter(cell => cell.is_edge())
+                    .map((edge) => ({
+                        edge,
+                        from: property !== "length" ? edge.options[property]
+                            : [
+                                edge.options.shorten.source,
+                                100 - edge.options.shorten.target
+                            ],
+                        to: value,
+                    })),
+            }],
+        );
     }
     
     /// Centre the view with respect to the selection, or the entire quiver if no cells are
