@@ -256,7 +256,7 @@ kbd {
 /* Grid interaction */
 
 .grid {
-	display: none;
+	display: block;
     position: fixed;
     pointer-events: none;
     z-index: -100;
@@ -567,6 +567,10 @@ being. */
     transform: translateY(-50%);
     border-radius: 4px;
 }
+
+/*.panel {*/
+    /*display: none;*/
+/*}*/
 
 .command .label-input-container .colour-indicator {
     display: none;

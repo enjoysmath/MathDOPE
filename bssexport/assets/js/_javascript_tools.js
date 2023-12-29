@@ -14,6 +14,16 @@ function set_diagram_name(name)
     render_element_in_katex(name_elem[0]);
 }
 
+function set_enabled_arrow_edit_button(en)
+{
+    if (en) {
+        $("#arrow-gear-button").css("visibility", "visible");
+    }
+    else {
+        $("#arrow-gear-button").css("visibility", "hidden");
+    }
+}
+
 function render_element_in_katex(element)
 {
     renderMathInElement(element, {

@@ -2506,6 +2506,7 @@ class UI {
             this.toolbar.update(this);
             if (this.selection_contains_edge()) {
                 this.panel.element.class_list.remove("hidden");
+                parent.set_enabled_arrow_edit_button(true);
             }
             if (this.selection.size > 0) {
                 this.panel.label_input.parent.class_list.remove("hidden");
@@ -2620,7 +2621,7 @@ class UI {
         this.pan_to(this.view.add(offset), this.scale + zoom);
     }
     
-    centre_view_action() {
+    center_view_action() {
         // If the focus point is focused, we centre on it; otherwise we centre on the
         // selection, or the entire quiver if no cells are selected.
         if (ui.element.query_selector(".focus-point.focused")) {
@@ -2702,6 +2703,20 @@ class UI {
             parent.display_django_messages();   
         });
     }
+
+    show_hints_action() {
+        ui.element.class_list.toggle("show-hints");
+        // const hidden = !ui.element.class_list.contains("show-hints");
+        // this.query_selector(".name").replace((hidden ? "Show" : "Hide") + " hints");
+    }
+
+    show_grid_action() {
+        ui.grid.class_list.toggle("hidden");
+    }
+
+    show_queue_action() {
+        ui.element.class_list.toggle("show-queue");                
+    }
     
     select_all_action() {
         ui.select(...ui.quiver.all_cells());
@@ -2728,6 +2743,60 @@ class UI {
     
     redo_action() {
         ui.history.redo(this);
+    }
+
+    zoom_out_action() {
+        ui.pan_view(Offset.zero(), -0.25);
+    }
+
+    zoom_in_action() {
+        ui.pan_view(Offset.zero(), 0.25);
+    }
+
+    reset_zoom_action() {
+        ui.scale = 0;
+        ui.pan_view(Offset.zero());
+    }
+
+    reverse_arrows_action() {
+        ui.history.add(ui, [{
+            kind: "reverse",
+            cells: ui.selection,
+        }], true);
+    }
+
+    flip_arrows_action() {
+        ui.history.add(ui, [{
+            kind: "flip",
+            cells: ui.selection,
+        }], true);
+    }
+
+    label_position_spinner_action(value)
+    {
+        const property = "label_position";
+
+        this.panel.unqueue_selected(ui);
+
+        ui.history.add_or_modify_previous(
+            ui,
+            [property, ui.selection],
+            [{
+                kind: property,
+                value,
+                cells: Array.from(ui.selection)
+                    .filter(cell => cell.is_edge())
+                    .map((edge) => ({
+                        edge,
+                        from: property !== "length" ? edge.options[property]
+                            : [
+                                edge.options.shorten.source,
+                                100 - edge.options.shorten.target
+                            ],
+                        to: value,
+                    })),
+            }],
+        );
     }
     
     /// Centre the view with respect to the selection, or the entire quiver if no cells are
@@ -2887,7 +2956,7 @@ class UI {
     /// Create the canvas upon which the grid will be drawn.
     initialise_grid(element) {
         const [width, height] = [document.body.offsetWidth, document.body.offsetHeight];
-        this.grid = new DOM.Canvas(null, width, height, { class: "grid" });
+        this.grid = new DOM.Canvas(null, width, height, { class: "grid hidden" });
         element.add(this.grid);
         this.update_grid();
     }
@@ -3844,20 +3913,12 @@ class Panel {
         };
 
         // The button to reverse an edge.
-        add_button("Reverse arrows", "⇌ Reverse", "r", () => {
-            ui.history.add(ui, [{
-                kind: "reverse",
-                cells: ui.selection,
-            }], true);
-        });
+        add_button("Reverse arrows", "⇌ Reverse", "r", 
+            ui.reverse_arrows_action);
 
         // The button to flip an edge.
-        add_button("Flip arrows", "⥮ Flip", "e", () => {
-            ui.history.add(ui, [{
-                kind: "flip",
-                cells: ui.selection,
-            }], true);
-        });
+        add_button("Flip arrows", "⥮ Flip", "e",
+            ui.flip_arrows_action);
 
         // The button to flip a label.
         add_button("Flip labels", "⥮ Flip labels", "f", () => {
@@ -5216,6 +5277,7 @@ class Panel {
             ui.colour_picker.close();
         }
         this.element.class_list.add("hidden");
+        parent.set_enabled_arrow_edit_button(false);
         this.defocus_inputs();
     }
 
@@ -5225,7 +5287,7 @@ class Panel {
             this.hide(ui);
         }
         if (ui.selection.size === 0) {
-            this.label_input.parent.class_list.add("hidden");
+            //this.label_input.parent.class_list.add("hidden");
             ui.colour_picker.close();
         }
     }
@@ -5628,23 +5690,19 @@ class Toolbar {
         add_action(
             "Centre view",
             [{ key: "G" }],
-            ui.centre_view_action
+            ui.center_view_action
         );
 
         add_action(
             "Zoom out",
             [{ key: "-", modifier: true, context: Shortcuts.SHORTCUT_PRIORITY.Always }],
-            () => {
-                ui.pan_view(Offset.zero(), -0.25);
-            },
+            ui.zoom_out_action
         );
 
         add_action(
             "Zoom in",
             [{ key: "=", modifier: true, context: Shortcuts.SHORTCUT_PRIORITY.Always }],
-            () => {
-                ui.pan_view(Offset.zero(), 0.25);
-            },
+            ui.zoom_in_action
         );
 
         add_action(
@@ -5654,22 +5712,13 @@ class Toolbar {
             // is no key called "100%" or similar. However, the text will then display underneath
             // the button as desired.
             [{ key: "100%" }],
-            () => {
-                ui.scale = 0;
-                ui.pan_view(Offset.zero());
-            },
+            ui.reset_zoom_action
         );
 
         add_action(
             "Hide grid",
             [{ key: "H", modifier: false, context: Shortcuts.SHORTCUT_PRIORITY.Defer }],
-            function () {
-                ui.grid.class_list.toggle("hidden");
-                const hidden = ui.grid.class_list.contains("hidden");
-                this.query_selector(".name").replace(
-                    (hidden ? "Show" : "Hide") + " grid"
-                );
-            },
+            ui.show_grid_action,
         );
 
         add_action(
@@ -5677,25 +5726,13 @@ class Toolbar {
             [{
                 key: "H", modifier: true, shift: true, context: Shortcuts.SHORTCUT_PRIORITY.Always
             }],
-            function () {
-                ui.element.class_list.toggle("show-hints");
-                const hidden = !ui.element.class_list.contains("show-hints");
-                this.query_selector(".name").replace(
-                    (hidden ? "Show" : "Hide") + " hints"
-                );
-            },
+            ui.show_hints_action
         );
 
         add_action(
             "Show queue",
             [],
-            function () {
-                ui.element.class_list.toggle("show-queue");
-                const hidden = !ui.element.class_list.contains("show-queue");
-                this.query_selector(".name").replace(
-                    (hidden ? "Show" : "Hide") + " queue"
-                );
-            },
+            ui.show_queue_action
         );
 
         add_action(
