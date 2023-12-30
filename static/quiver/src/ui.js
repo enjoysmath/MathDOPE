@@ -2772,6 +2772,13 @@ class UI {
         }], true);
     }
 
+    flip_arrow_labels_action() {
+        ui.history.add(ui, [{
+            kind: "flip labels",
+            cells: ui.selection,
+        }], true);
+    }
+
     label_position_action(value)
     {
         const property = "label_position";
@@ -4003,12 +4010,8 @@ class Panel {
             ui.flip_arrows_action);
 
         // The button to flip a label.
-        add_button("Flip labels", "⥮ Flip labels", "f", () => {
-            ui.history.add(ui, [{
-                kind: "flip labels",
-                cells: ui.selection,
-            }], true);
-        });
+        add_button("Flip labels", "⥮ Flip labels", "f", 
+            ui.flip_arrow_labels_action);
 
         // The label alignment options.
         this.create_option_list(

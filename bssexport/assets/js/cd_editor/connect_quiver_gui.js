@@ -114,6 +114,9 @@ $(document).ready(() => {
     $("#arrow-curvature-input").on('input', () => {
         cd_editor_window.ui.arrow_curvature_action($("#arrow-curvature-input").val());
     });
+    $("#flip-arrow-labels-button").on('click', () => {
+        cd_editor_window.ui.flip_arrow_labels_action(); 
+    });
     
       
     $(window).on('load', () => {        
