@@ -127,6 +127,9 @@
          <a class="dropdown-item" data-bs-target="#settings-modal" data-bs-toggle="modal" href='{% static "#" %}'>
           Settings
          </a>
+         <a class="dropdown-item" data-bs-target="#about-modal" data-bs-toggle="modal" href='{% static "#" %}'>
+          About
+         </a>
         </div>
        </div>
       </li>
@@ -385,6 +388,40 @@
         Show Queue
        </label>
       </div>
+     </div>
+     <div class="modal-footer has-modal-bg-color" style="border-top-width: 0px;border-top-color: rgba(222,226,230,0);background: rgba(40,167,45,0.57);">
+      <button class="btn btn-light" data-bs-dismiss="modal" type="button">
+       Close
+      </button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="modal fade justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center" id="about-modal" role="dialog" style="margin-top: 48px;opacity: 1.0;backdrop-filter: opacity(1);" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="modal-header has-modal-bg-color" style="border: none;background: rgba(40,167,45,0.57);">
+      <h4 class="modal-title">
+       About Diagram Editor
+      </h4>
+      <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+      </button>
+     </div>
+     <div class="modal-body flex-wrap has-modal-bg-color" style="height: auto;width: auto;border: none;background: rgba(40,167,45,0.57);padding-top: 16px;">
+      <p>
+       MathDOPE's Diagram Editor is an adaption of Varkor's original
+       <a href="https://q.uiver.app/">
+        quiver
+       </a>
+       built by Dan Donnelly and Peter Shi in December 2023, using BootStrap Studio and HTML/CSS/JS.
+      </p>
+      <p>
+       MathDOPE's Diagram Editor is part of the bigger project MathDOPE, which includes storing diagrams in a Neo4j database from a custom Django backend. Source code for the entire MathDOPE project, including the Diagram Editor, can be found on
+       <a href="https://github.com/enjoysmath/MathDOPE">
+        GitHub
+       </a>
+       .
+      </p>
      </div>
      <div class="modal-footer has-modal-bg-color" style="border-top-width: 0px;border-top-color: rgba(222,226,230,0);background: rgba(40,167,45,0.57);">
       <button class="btn btn-light" data-bs-dismiss="modal" type="button">
