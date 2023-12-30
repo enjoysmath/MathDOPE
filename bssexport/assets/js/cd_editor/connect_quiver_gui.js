@@ -116,8 +116,23 @@ $(document).ready(() => {
     });
     $("#flip-arrow-labels-button").on('click', () => {
         cd_editor_window.ui.flip_arrow_labels_action(); 
+    });   
+    $("#left-align-radio").change(() => {
+        if ($("#left-align-radio").is(":checked"))
+            cd_editor_window.ui.label_align_action("left");
+    });    
+    $("#center-align-clear-radio").change(() => {
+        if ($("#center-align-clear-radio").is(":checked"))
+            cd_editor_window.ui.label_align_action("centre");
     });
-    
+    $("#center-align-over-radio").change(() => {
+        if ($("#center-align-over-radio").is(":checked"))
+            cd_editor_window.ui.label_align_action("over");
+    });    
+    $("#right-align-radio").change(() => {
+        if ($("#right-align-radio").is(":checked"))
+            cd_editor_window.ui.label_align_action("right");
+    });    
       
     $(window).on('load', () => {        
         cd_editor_window.ui.load_diagram_action();

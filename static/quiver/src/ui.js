@@ -2779,6 +2779,28 @@ class UI {
         }], true);
     }
 
+    label_align_action(radio)
+    {
+        this.panel.unqueue_selected(ui);
+        const selected_edges = Array.from(ui.selection).filter(cell => cell.is_edge());
+
+        ui.history.add(ui, [{
+            kind: "label_alignment",
+            alignments: Array.from(ui.selection)
+                .filter(cell => cell.is_edge())
+                .map((edge) => ({
+                    edge,
+                    from: edge.options.label_alignment,
+                    to: radio,
+                })),
+        }]);
+        selected_edges.forEach(edge => edge.options.label_alignment = radio);
+
+        for (const edge of selected_edges) {
+            edge.render(ui);
+        }
+    }
+
     label_position_action(value)
     {
         const property = "label_position";
@@ -5287,6 +5309,15 @@ class Panel {
                             });
                         }
                         break;
+                    case "label_alignment":
+                        if (value !== null)
+                        {
+                            parent.set_arrow_label_alignment(value);
+                        }
+                        else {
+                            parent.set_arrow_label_alignment("null");
+                        }
+
                     default:
                         this.element.query_selector_all(
                             `input[name="${name}"]:checked`

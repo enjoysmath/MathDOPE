@@ -17,6 +17,36 @@ function set_arrow_offset(value)
     $("#arrow-offset-input").val(value);
 }
 
+function set_arrow_label_alignment(value)
+{
+    // left, centre, over, right    
+    if (value == "left")
+    {
+        $("#left-align-radio").prop("checked", true);
+    }
+    else if (value == "centre")
+    {
+        $("#center-align-clear-radio").prop("checked", true);
+    }
+    else if (value == "over")
+    {
+        $("#center-align-over-radio").prop("checked", true);
+    }
+    else if (value == "right")
+    {
+        $("#right-align-radio").prop("checked", true);
+    }
+    else if (value == "null")
+    {
+        $("#right-align-radio").prop("checked", false);
+        $("#center-align-over-radio").prop("checked", false);
+        $("#center-align-clear-radio").prop("checked", false);
+        $("#left-align-radio").prop("checked", false);
+    }        
+    else
+        throw "Not implemented";
+}
+
 function set_arrow_label_position(value)
 {
     $("#arrow-label-position-input").val(value);
