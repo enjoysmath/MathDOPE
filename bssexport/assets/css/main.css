@@ -1,0 +1,13 @@
+.modal {
+  overflow-y: auto;
+}
+
+.modal-open {
+}
+
+.nav-link {
+  padding: 8px;
+  margin-right: 8px;
+  height: 38px;
+}
+

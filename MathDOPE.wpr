@@ -51,7 +51,13 @@ proj.launch-config = {loc('manage.py'): ('custom',
          'launch-WzK1BHvTw0sFzCSl')),
                       loc('theory/models.py'): ('project',
         ('',
-         'launch-WzK1BHvTw0sFzCSl'))}
+         'launch-WzK1BHvTw0sFzCSl')),
+                      loc('twin-primes.py'): ('project',
+        ('',
+         'launch-ZyweXmS6pP66sBXO')),
+                      loc('twin_primes.py'): ('project',
+        ('',
+         'launch-ZyweXmS6pP66sBXO'))}
 proj.main-file = loc('manage.py')
 testing.test-framework = {None: ':internal djangotest',
                           loc('manage.py'): ':internal djangotest'}

@@ -22,6 +22,7 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
+  <link href='{% static "css/main.css" %}' rel="stylesheet"/>
   <link href='{% static "css/switch.css" %}' rel="stylesheet"/>
   <link href="{% static 'quiver/src/KaTeX/katex.min.css' %}" rel="stylesheet"/>
   <script defer="" src="{% static 'quiver/src/KaTeX/katex.min.js' %}">
@@ -41,8 +42,8 @@
   </script>
  </head>
  <body>
-  <nav class="navbar navbar-expand-lg navigation-clean-button navbar-light" style="/*position: absolute;*/width: 100%;height: auto;max-height: auto;padding: 0px;">
-   <div class="container">
+  <nav class="navbar navbar-expand-lg">
+   <div class="container-fluid">
     <a class="navbar-brand bounce animated" href="{% url 'user_home' %}" style="font-family: 'Indie Flower', serif;color: var(--bs-indigo);font-size: xx-large;font-weight: bold;margin: 0px;padding: 0px;">
      MathDOPE
      <img height="36" src='{% static "img/android-chrome-192x192.png" %}' style="margin-bottom: 5px;padding-left: 0px;margin-left: -6px;" width="36"/>
@@ -55,18 +56,29 @@
      </span>
     </button>
     <div class="collapse navbar-collapse" id="navcol-1">
-     <ul class="navbar-nav me-auto">
-      <li class="nav-item">
+     <ul class="navbar-nav">
+     </ul>
+     <ul class="navbar-nav d-flex d-sm-flex d-md-flex d-lg-flex flex-row flex-shrink-1 align-items-center flex-wrap align-items-sm-center align-items-md-center justify-content-lg-end align-items-lg-center align-items-xl-center flex-wrap" style="width: 100%;">
+      <li class="nav-item" style="width: 150px;">
+       <a class="nav-link active d-flex d-md-flex d-lg-flex d-xl-flex align-items-center align-items-md-center align-items-lg-center align-items-xl-center" href="https://github.com/enjoysmath/MathDOPE" rel="external" style="width: auto;max-width: none;margin-right: 4px;" target="_blank">
+        Source Code
+        <svg class="bi bi-github" fill="currentColor" height="1em" style="font-size: 31px;padding-left: 0px;margin-left: 6px;" viewbox="0 0 16 16" width="1em" xmlns="http://www.w3.org/2000/svg">
+         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8">
+         </path>
+        </svg>
+       </a>
       </li>
       <li class="nav-item">
+       {% if request.user.is_authenticated %}
+       <a class="nav-link d-xl-flex align-items-xl-center btn btn-primary" href="{% url 'user_home' %}">
+        My Home
+       </a>
+       {% endif %}
+      </li>
+      <li class="nav-item">
+       {% include 'sign_inout_buttons.html' %}
       </li>
      </ul>
-     {% if request.user.is_authenticated %}
-     <a class="btn btn-primary" href="{% url 'user_home' %}" style="padding: 3px 6px;border-radius: 8px;margin: 4px;">
-      My Home
-     </a>
-     {% endif %}
-     {% include 'sign_inout_buttons.html' %}
     </div>
    </div>
   </nav>
@@ -161,8 +173,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
   </script>
   <script src='{% static "js/bs-init.js" %}'>
-  </script>
-  <script src='{% static "js/_javascript_tools.js" %}'>
   </script>
  </body>
 </html>

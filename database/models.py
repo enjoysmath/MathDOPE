@@ -521,17 +521,6 @@ class Category(StructuredNode):
         return category
 
 
-class DiagramProperty(StructuredNode):
-    diagram = RelationshipTo('Diagram', 'OF_DIAGRAM', cardinality=One)
-    
-    
-class CommutativityProperty(DiagramProperty):
-    COMMUTES = { 'NC' : 'Non-commutative', 'C' : 'Commutes',  'DNC': 'Does not commute'}
-    commutes = StringProperty(choices=COMMUTES, default='NC')
-        
-        
-class LivesInCategory(DiagramProperty):
-    category = RelationshipTo('Category', 'LIVES_IN', cardinality=One)
     
 
 class DiagramSet(StructuredNode):
@@ -598,19 +587,6 @@ class DiagramSet(StructuredNode):
                 
     ##def get_variable_template_regex(self, text:str) -> bidict:    
 
-
-
- 
-class RuleSet(StructuredNode):
-    pass
-
-
-class Context(Object):
-    pass
-
-
-class Proof(Arrow):
-    pass
 
 
 
