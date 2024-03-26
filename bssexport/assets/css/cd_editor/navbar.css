@@ -177,12 +177,19 @@
 }
 
 @media (min-width: 992px) {
+  #search-button {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 992px) {
   .navbar-main-link {
     margin: auto;
     height: 40px;
     margin-right: 7px;
     margin-top: -1px;
     font-size: 16px;
+    padding: 8px;
   }
 }
 
@@ -335,7 +342,7 @@
 }
 
 .dropdown-menu a {
-  color: darkslategray;
+  color: #666;
 }
 
 .btn-close {

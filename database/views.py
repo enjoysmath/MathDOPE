@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
-from .models import get_model_by_slug, get_unique, Diagram
+from .models import get_model_by_slug, get_unique, Diagram, Object
 from django.contrib.auth.decorators import login_required, user_passes_test
 #from accounts.permissions import is_editor
 from dope.http_tools import get_posted_text, render_error
@@ -14,20 +14,7 @@ from django.contrib import messages
 from .forms import CreateDiagramForm
 from django.utils.text import slugify
 from neo4j.exceptions import ServiceUnavailable
-
-
-#def user_login(request):
-    #if request.method == 'POST':
-        #form = LoginForm(data=request.POST)
-        #if form.is_valid():
-            #username = form.cleaned_data.get('username')
-            #raw_password = form.cleaned_data.get('password')
-            #user = authenticate(username=username, password=raw_password)
-            #login(request, user)
-            #return redirect('user_home')
-    #else:
-        #form = LoginForm()
-    #return render(request, 'sign_in.html', {'form': form})
+from neomodel import db
 
 
 @login_required
@@ -258,3 +245,94 @@ def save_diagram(request, slug):
     #except Exception as e:
         #return JsonResponse({'success': False, 'error_msg': f'{full_qualname(e)}: {e}'}) 
 
+
+rule_search_orders = [
+    ('creator', 'Creator Name'),
+    ('created', 'Date Created'),
+    ('edited', 'Date Edited'),
+    ('usages', 'Number of Usages'),
+    ('views', 'Number of Views'),
+    ('votes', 'Sum of Votes'),
+    ('name', 'Rule Name'),
+]
+
+rule_search_order_map = { param: text for param,text in rule_search_orders }
+
+@login_required
+def rule_search(request, diagram_id:str):
+    try:  
+        ascending = request.GET.get('asc', 'true')
+        order_param = request.GET.get('ord', 'name')
+        one_to_one = request.GET.get('onetoone', '1')
+        
+        if ascending not in ('true', 'false'):
+            raise ValueError(f'Invalid order direction parameter (asc) value: {ascending}')
+        
+        if one_to_one not in ('0', '1'):
+            raise ValueError(f'Invalid one-to-one parameter (onetoone) value: {one_to_one}')
+        
+        if order_param not in rule_search_order_map:
+            raise ValueError(order_param + " is not a valid value to order by.")        
+        
+        # Starting from longest paths first should shorten the final search query (not this one)        
+        paths_by_length = Diagram.get_paths_by_length(diagram_id)          
+        nodes, rels, search_query = Diagram.build_query_from_paths(paths_by_length)
+                        
+        rules = []
+        
+        if search_query:
+            regexes, search_query = Diagram.build_match_query(search_query, nodes, rels)
+            search_query += "RETURN n0"  # We only need n0 to get a diagram id at this stage of the app UX
+            
+            results, meta = db.cypher_query(search_query)
+            
+            rule_memo = {
+                # To weed out duplicated results, keyed by rule.uid
+            }
+            
+            for result in results:
+                n0 = Object.inflate(result[0])
+                
+                diagram_results, meta = db.cypher_query(
+                    f"MATCH (D:Diagram)-[:CONTAINS]->(X:Object) WHERE X.uid = '{n0.uid}' RETURN D.uid")
+                
+                if diagram_results and diagram_results[0]:
+                    result_diagram_id = diagram_results[0][0]
+                    rules_query = \
+                        f"MATCH (R:DiagramRule)-[:KEY_DIAGRAM]->(D:Diagram) " + \
+                        f"WHERE D.uid = '{result_diagram_id}' RETURN R" 
+                    
+                    #HERE'S WHERE WE INSERT ORDERING CODE also key / result search^^
+                    
+                    results, meta = db.cypher_query(rules_query)                
+                    
+                    for rule in results:
+                        rule = DiagramRule.inflate(rule[0])
+                        
+                        key_diagram = rule.key_diagram.single()
+                        if rule.uid not in rule_memo:
+                            if one_to_one == '1':
+                                if len(key_diagram.objects) != len(nodes) or key_diagram.morphism_count() != len(rels):
+                                    continue                        
+
+                            rule_memo[rule.uid] = rule
+                            rules.append(rule)                           
+        
+        order_text = rule_search_order_map[order_param]
+        
+        context = {
+            'diagram_id' : diagram_id,
+            'order_param' : order_param,
+            'order_text' : order_text,
+            'orders' : rule_search_orders,
+            'rules' : rules,
+            'ascending' : ascending,
+            'one_to_one' : one_to_one,
+        }
+        
+        return render(request, 'rule_search.html', context)
+        
+    except Exception as e:
+        if DEBUG:
+            raise e
+        return redirect('error', f'{full_qualname(e)}: {str(e)}')        

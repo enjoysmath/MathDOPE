@@ -77,7 +77,7 @@
         <div id="django-messages-div" style="position:absolute; width:100%">
             <div dj-include="messages.html"></div>
         </div>
-        <h3 class="text-break fw-light text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;width: 100%;margin-right: 16px;margin-left: 6px;padding-right: 75px;padding-left: 68px;font-family: sans-serif;height: auto;"><br><br></h3>
+        <h3 class="text-break fw-light text-center text-primary d-sm-flex justify-content-sm-center align-items-sm-center align-self-center" id="diagram-name" style="display: inline-flex;position: absolute;bottom: 0;justify-content: center;font-family: sans-serif;padding: 0px 100px 0px 100px;padding-left: 101px;padding-right: 101px;margin-left: 6px;margin-right: 16px;height: auto;width: 100%;"><br><br></h3>
         <div class="modal" role="dialog" tabindex="-1" id="selection-options-modal" style="margin: auto;margin-top: auto;opacity: 0.75;padding: 0;">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -183,7 +183,10 @@
             </div>
         </div>
         <div dj-include="diagram_editor_include.html"></div>
-    </div><script src="{% static 'js/javascript_tools.js' %}"></script>
+    </div><button class="btn btn-primary d-lg-flex align-items-lg-center navbar-main-link" id="search-button" type="button" style="position: absolute;bottom: 3%;left: 1.5%;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search-heart" style="font-size: 27px;">
+            <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018"></path>
+            <path d="M13 6.5a6.471 6.471 0 0 1-1.258 3.844c.04.03.078.062.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1.007 1.007 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11"></path>
+        </svg><span>Search</span></button><script src="{% static 'js/javascript_tools.js' %}"></script>
 <script src="{% static 'cd_editor/js/connect_quiver_gui.js' %}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

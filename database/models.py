@@ -510,7 +510,6 @@ class Diagram(StructuredNode):
 
 
 
-
 class Category(StructuredNode):
     uid = UniqueIdProperty()
     name = StringProperty(required=True)
@@ -521,11 +520,40 @@ class Category(StructuredNode):
         return category
 
 
+#class Context:
+    #diagrams = RelationshipTo('Diagram', 'ENTAILS')
     
 
-class DiagramSet(StructuredNode):
-    diagrams = RelationshipTo('Diagram', 'CONTAINS', cardinality=ZeroOrMore)
+
+##class Proof(StructuredNode):
+   
+    ##steps = RelationshipTo('ProofStep', 'HAS_STEP', model=ProofOrder, cardinality=OneOrMore)
+    ##goal_step = RelationshipTo('ProofStep', 'ENDS_WITH', cardinality=One)
+
+
+#class ProofStep(StructuredNode):
+    #english = StringProperty()
+    #output_diagram = RelationshipTo('Diagram', 'OUTPUTS', cardinality=One)
     
+    
+#class Let(ProofStep):
+    #pass
+
+
+#class Theorem(StructuredNode):
+    #name = StringProperty(max_length=MAX_DIAGRAM_NAME_LEN)     # TODO: create another theorem name max variable in settings
+    
+    #input_diagrams = RelationshipTo('Diagram', 'REQUIRES', model=ProofOrder, cardinality=OneOrMore)
+    #output_diagram = RelationshipTo('Diagram', 'OUTPUTS', cardinality=One)
+    
+    #proofs = RelationshipTo('Proof', 'PROVEN_BY', cardinality=ZeroOrMore)
+    
+
+#class TheoremApply(ProofStep):
+    #input_diagrams = RelationshipTo('Diagram', 'REQUIRES', model=ProofOrder, cardinality=OneOrMore)
+    
+    
+
 
 #class DiagramRule(Arrow):
     #author_id = StringProperty(required=True)
