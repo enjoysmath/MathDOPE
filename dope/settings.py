@@ -115,7 +115,7 @@ if os.environ.get('ON_HEROKU', '0') == '0':
 else:
     DATABASES = {
         # TODO: what does this max_age setting do?
-        'default' : dj_database_url.config(conn_max_age=600)
+        'default' : dj_database_url.config()
     }
 
 # Password validation
