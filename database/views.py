@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
-from .models import get_model_by_slug, get_unique, Diagram, Object
+from .models import get_model_by_uid, get_unique, Diagram, Object
 from django.contrib.auth.decorators import login_required, user_passes_test
 #from accounts.permissions import is_editor
 from dope.http_tools import get_posted_text, render_error
@@ -9,10 +9,9 @@ import json
 from django.db import OperationalError
 from django.core.exceptions import ObjectDoesNotExist
 from neomodel.properties import StringProperty
-from dope.settings import MAX_ATOMIC_LATEX_LENGTH, MAX_slug_LEN
+from dope.settings import DEBUG, MAX_DIAGRAM_NAME_LEN
 from django.contrib import messages
 from .forms import CreateDiagramForm
-from django.utils.text import slugify
 from neo4j.exceptions import ServiceUnavailable
 from neomodel import db
 
@@ -25,23 +24,22 @@ def create_diagram(request):
             
             if form.is_valid():
                 diagram_name = form.cleaned_data.get('diagram_name')                   
-                slug = slugify(diagram_name)
                 
-                if 0 < len(slug) <= MAX_slug_LEN:
+                if 0 < len(diagram_name) <= MAX_DIAGRAM_NAME_LEN:
                     
-                    diagram = Diagram.nodes.get_or_none(slug=slug, author_id=request.user.id)
+                    diagram = Diagram.nodes.get_or_none(name=diagram_name, author_id=request.user.id)
                     
                     if diagram is None:
-                        diagram = Diagram.our_create(slug=slug, author_id=request.user.id, name=diagram_name)
+                        diagram = Diagram.our_create(name=diagram_name, author_id=request.user.id)
                         
-                        return redirect('diagram_editor', slug)
+                        return redirect('diagram_editor', diagram.uid)
                     else:
                         error_msg = 'A diagram by that name already exists.'                
                 else:
                     if len(diagram_name) == 0:
                         error_msg = 'A diagram name must be non-empty.'
-                    elif len() > MAX_slug_LEN:
-                        error_msg = f'A diagram name can be no longer than {MAX_slug_LEN} characters.'
+                    elif len(diagram_name) > MAX_DIAGRAM_NAME_LEN:
+                        error_msg = f'A diagram name can be no longer than {MAX_DIAGRAM_NAME_LEN} characters.'
             else:
                 # Form is not valid
                 error_msg = 'The form submitted is not valid.'
@@ -173,12 +171,12 @@ def list_all_diagrams(request):
         
         
 @login_required
-def load_diagram(request, slug:str):
+def load_diagram(request, diagram_id:str):
     try:
         if request.method == 'GET':
             username = request.user.username
             
-            diagram = get_model_by_slug(Diagram, slug)
+            diagram = get_model_by_uid(Diagram, diagram_id)
             
             if diagram.author_id != request.user.id:
                 raise OperationalError(f'The diagram with name "{diagram_name}" is only editable by its original author, {username}')                
@@ -196,8 +194,8 @@ def load_diagram(request, slug:str):
             raise OperationalError('You can only use the GET method to load from the database.') 
                 
     except Exception as e:
-        #if __debug__:
-            #raise e
+        if __debug__:
+            raise e
         error_msg = f'{full_qualname(e)}: {str(e)}'
         messages.error(request, error_msg)
         
@@ -205,16 +203,16 @@ def load_diagram(request, slug:str):
 
 
 @login_required   
-def save_diagram(request, slug):
+def save_diagram(request, diagram_id: str):
     try:
         if request.method != 'POST': #or not request.headers.get("contentType", "application/json; charset=utf-8"):
             raise OperationalError('You can only use the POST method to save to the database.')            
         username = request.user.username
         
-        diagram = get_model_by_slug(Diagram, slug)
+        diagram = get_model_by_uid(Diagram, diagram_id)
 
         if diagram.author_id != request.user.id:
-            raise OperationalError(f'The diagram with name "{slug}" is only editable by its original author, {username}')                
+            raise OperationalError(f'The diagram with name "{diagram_id}" is only editable by its original author, {username}')                
                        
         body = request.body.decode('utf-8')
         
@@ -257,6 +255,8 @@ rule_search_orders = [
 ]
 
 rule_search_order_map = { param: text for param,text in rule_search_orders }
+
+
 
 @login_required
 def rule_search(request, diagram_id:str):
@@ -335,4 +335,85 @@ def rule_search(request, diagram_id:str):
     except Exception as e:
         if DEBUG:
             raise e
-        return redirect('error', f'{full_qualname(e)}: {str(e)}')        
+        return redirect('error', f'{full_qualname(e)}: {str(e)}')
+    
+    
+@login_required
+def diagram_search(request, diagram_id):
+    try:  
+        #ascending = request.GET.get('asc', 'true')
+        #order_param = request.GET.get('ord', 'name')
+        #one_to_one = request.GET.get('onetoone', '1')
+        
+        #if ascending not in ('true', 'false'):
+            #raise ValueError(f'Invalid order direction parameter (asc) value: {ascending}')
+        
+        #if one_to_one not in ('0', '1'):
+            #raise ValueError(f'Invalid one-to-one parameter (onetoone) value: {one_to_one}')
+        
+        #if order_param not in rule_search_order_map:
+            #raise ValueError(order_param + " is not a valid value to order by.")        
+        
+        # Starting from longest paths first should shorten the final search query (not this one)        
+        paths_by_length = Diagram.get_paths_by_length(diagram_id)          
+        nodes, rels, search_query = Diagram.build_query_from_paths(paths_by_length)
+
+        diagrams = []
+        
+        if search_query:
+            regexes, search_query = Diagram.build_match_query(search_query, nodes, rels)
+            search_query += "RETURN n0"
+            # We only need n0 to get a diagram id at this stage of the app UX
+            
+            results, meta = db.cypher_query(search_query)
+            
+            diagram_memo = {
+                # To weed out duplicated results, keyed by rule.uid
+            }
+            
+            #for result in results:
+                #n0 = Object.inflate(result[0])
+                
+                #diagram_results, meta = db.cypher_query(
+                    #f"MATCH (D:Diagram)-[:CONTAINS]->(X:Object) WHERE X.uid = '{n0.uid}' RETURN D.uid")
+                
+                #if diagram_results and diagram_results[0]:
+                    #result_diagram_id = diagram_results[0][0]
+                    #rules_query = \
+                        #f"MATCH (R:DiagramRule)-[:KEY_DIAGRAM]->(D:Diagram) " + \
+                        #f"WHERE D.uid = '{result_diagram_id}' RETURN R" 
+                    
+                    ##HERE'S WHERE WE INSERT ORDERING CODE also key / result search^^
+                    
+                    #results, meta = db.cypher_query(rules_query)                
+                    
+                    #for rule in results:
+                        #rule = DiagramRule.inflate(rule[0])
+                        
+                        #key_diagram = rule.key_diagram.single()
+                        #if rule.uid not in rule_memo:
+                            #if one_to_one == '1':
+                                #if len(key_diagram.objects) != len(nodes) or key_diagram.morphism_count() != len(rels):
+                                    #continue                        
+
+                            #rule_memo[rule.uid] = rule
+                            #rules.append(rule)                           
+        
+        #order_text = rule_search_order_map[order_param]
+        
+        context = {
+            'diagram_id' : diagram_id,
+            #'order_param' : order_param,
+            #'order_text' : order_text,
+            #'orders' : rule_search_orders,
+            'diagrams' : diagrams,
+            #'ascending' : ascending,
+            #'one_to_one' : one_to_one,
+        }
+        
+        return render(request, 'diagram_search.html', context)
+        
+    except Exception as e:
+        if DEBUG:
+            raise e
+        return redirect('error', f'{full_qualname(e)}: {str(e)}')            
