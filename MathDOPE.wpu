@@ -33,13 +33,45 @@ gui.perspectives = (1,
                  'constraint': 'perspective_tools_only',
                  'current_pages': [4],
                  'full-screen': False,
+<<<<<<< HEAD
                  'notebook_display': 'tabs only',
                  'notebook_percent': 0.018436578171091456,
+=======
+<<<<<<< .mine
+                 'notebook_display': 'tabs only',
+                 'notebook_percent': 0.018436578171091456,
+=======
+                 'notebook_display': 'normal',
+                 'notebook_percent': 0.3928046989720999,
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                  'override_title': None,
                  'pagelist': [('project',
                                'tall',
                                0,
+<<<<<<< HEAD
                                {}),
+=======
+<<<<<<< .mine
+                               {}),
+
+
+
+
+
+
+
+=======
+                               {'tree-state': {'file-sort-method': 'by name',
+        'list-files-first': False,
+        'tree-states': {'deep': {'expanded-nodes': [(4,),
+        (5,)],
+                                 'selected-nodes': [(5,
+        5)],
+                                 'top-node': (0,)}},
+        'tree-style': 'deep'}}),
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                               ('source-assistant',
                                'tall',
                                2,
@@ -57,10 +89,26 @@ gui.perspectives = (1,
                                0,
                                {})],
                  'primary_view_state': {'area': 'wide',
+<<<<<<< HEAD
         'constraint': 'perspective_tools_only',
         'current_pages': [6],
         'notebook_display': 'normal',
         'notebook_percent': 0.1333333333333333,
+=======
+<<<<<<< .mine
+        'constraint': 'perspective_tools_only',
+        'current_pages': [6],
+=======
+        'constraint': None,
+        'current_pages': [7],
+>>>>>>> .theirs
+        'notebook_display': 'normal',
+<<<<<<< .mine
+        'notebook_percent': 0.1333333333333333,
+=======
+        'notebook_percent': 0.42028985507246375,
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'override_title': None,
         'pagelist': [('python-shell',
                       'wide',
@@ -175,7 +223,15 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                                        'fRegexFlags': 42,
                                        'fReplaceText': '',
                                        'fReverse': False,
+<<<<<<< HEAD
                                        'fSearchText': 'diagram',
+=======
+<<<<<<< .mine
+                                       'fSearchText': 'diagram',
+=======
+                                       'fSearchText': ', Model',
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                                        'fStartPos': 0,
                                        'fStyle': 'text',
                                        'fWholeWords': True,
@@ -206,7 +262,15 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                                        'fRegexFlags': 42,
                                        'fReplaceText': '',
                                        'fReverse': False,
+<<<<<<< HEAD
                                        'fSearchText': 'iframe',
+=======
+<<<<<<< .mine
+                                       'fSearchText': 'iframe',
+=======
+                                       'fSearchText': 'Category',
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                                        'fStartPos': 0,
                                        'fStyle': 'text',
                                        'fWholeWords': False,
@@ -239,12 +303,32 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                       'wide',
                       0,
                       {})],
+<<<<<<< HEAD
+=======
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'primary_view_state': {'editor_states': ({'bookmarks': ([[loc('database/views.py'),
         {'attrib-starts': [('diagram_search|0|',
                             341)],
          'code-line': "        return render(request, 'diagram_search.html', context)\r\n",
          'first-line': 401,
+<<<<<<< HEAD
          'folded-linenos': [],
+=======
+
+
+=======
+        'primary_view_state': {'editor_states': ({'bookmarks': ([[loc('database/models.py'),
+        {'attrib-starts': [('Arrow|0|',
+                            15),
+                           ('Arrow|0|.source|0|',
+                            176)],
+         'code-line': '\r\n',
+         'first-line': 161,
+>>>>>>> .theirs
+         'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
          'sel-line': 415,
          'sel-line-start': 16315,
          'selection_end': 16354,
@@ -256,7 +340,25 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                              341)],
           'code-line': "        return render(request, 'diagram_search.html', context)\r\n",
           'first-line': 359,
+<<<<<<< HEAD
           'folded-linenos': [],
+=======
+=======
+         'sel-line': 179,
+         'sel-line-start': 7615,
+         'selection_end': 7615,
+         'selection_start': 7615,
+         'zoom': 0},
+        1712909288.2792842],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Object|0|',
+                             180)],
+          'code-line': "    CONNECTS_TO = RelationshipTo('Object', 'CONNECTS_TO', model=Arrow, cardinality=ZeroOrMore)    \r\n",
+          'first-line': 161,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'sel-line': 415,
           'sel-line-start': 16315,
           'selection_end': 16354,
@@ -268,7 +370,25 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                              341)],
           'code-line': "        return render(request, 'diagram_search.html', context)\r\n",
           'first-line': 329,
+<<<<<<< HEAD
           'folded-linenos': [],
+=======
+=======
+          'sel-line': 183,
+          'sel-line-start': 7756,
+          'selection_end': 7819,
+          'selection_start': 7814,
+          'zoom': 0},
+         1712909292.055082],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Object|0|',
+                             180)],
+          'code-line': "    CONNECTS_TO = RelationshipTo('Object', 'CONNECTS_TO', model=Arrow, cardinality=ZeroOrMore)    \r\n",
+          'first-line': 161,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'sel-line': 415,
           'sel-line-start': 16315,
           'selection_end': 16354,
@@ -279,6 +399,7 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
          {'attrib-starts': [],
           'code-line': 'from django.shortcuts import render, redirect, HttpResponse\r\n',
           'first-line': 0,
+<<<<<<< HEAD
           'folded-linenos': [],
           'sel-line': 0,
           'sel-line-start': 0,
@@ -291,11 +412,184 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
           'code-line': 'from django.shortcuts import render, redirect, HttpResponse\r\n',
           'first-line': 18,
           'folded-linenos': [],
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+          'sel-line': 183,
+          'sel-line-start': 7756,
+          'selection_end': 7818,
+          'selection_start': 7814,
+          'zoom': 0},
+         1712909292.2008421],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Object|0|',
+                             180)],
+          'code-line': "    CONNECTS_TO = RelationshipTo('Object', 'CONNECTS_TO', model=Arrow, cardinality=ZeroOrMore)    \r\n",
+          'first-line': 161,
+          'folded-linenos': [],
+          'sel-line': 183,
+          'sel-line-start': 7756,
+          'selection_end': 7817,
+          'selection_start': 7814,
+          'zoom': 0},
+         1712909292.3757157],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Object|0|',
+                             180)],
+          'code-line': "    CONNECTS_TO = RelationshipTo('Object', 'CONNECTS_TO', model=Arrow, cardinality=ZeroOrMore)    \r\n",
+          'first-line': 161,
+          'folded-linenos': [],
+          'sel-line': 183,
+          'sel-line-start': 7756,
+          'selection_end': 7816,
+          'selection_start': 7814,
+          'zoom': 0},
+         1712909292.5225346],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Object|0|',
+                             180)],
+          'code-line': '    name = StringProperty(max_length=MAX_ATOMIC_LATEX_LENGTH, required=True)\r\n',
+          'first-line': 161,
+          'folded-linenos': [],
+          'sel-line': 182,
+          'sel-line-start': 7678,
+          'selection_end': 7685,
+          'selection_start': 7684,
+          'zoom': 0},
+         1712909295.972794],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Diagram|0|',
+                             279),
+                            ('Diagram|0|.init_diagram|0|',
+                             337)],
+          'code-line': '        #category = get_unique(Category, name=DEFAULT_CATEGORY_NAME)\r\n',
+          'first-line': 316,
+          'folded-linenos': [],
+          'sel-line': 338,
+          'sel-line-start': 12877,
+          'selection_end': 12894,
+          'selection_start': 12886,
+          'zoom': 0},
+         1712909298.0552254],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Diagram|0|',
+                             279),
+                            ('Diagram|0|.quiver_format|0|',
+                             342)],
+          'code-line': '        format += vertices\r\n',
+          'first-line': 339,
+          'folded-linenos': [],
+          'sel-line': 355,
+          'sel-line-start': 13456,
+          'selection_end': 13482,
+          'selection_start': 13482,
+          'zoom': 0},
+         1712909331.199278],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Diagram|0|',
+                             279),
+                            ('Diagram|0|.build_match_query|0|',
+                             458)],
+          'code-line': '        def neo4j_regex_from_template(template):\r\n',
+          'first-line': 456,
+          'folded-linenos': [],
+          'sel-line': 470,
+          'sel-line-start': 17335,
+          'selection_end': 17383,
+          'selection_start': 17383,
+          'zoom': 0},
+         1712909332.791185],
+        [loc('database/models.py'),
+         {'attrib-starts': [],
+          'code-line': 'class Category(StructuredNode):\r\n',
+          'first-line': 499,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'sel-line': 0,
           'sel-line-start': 0,
           'selection_end': 0,
           'selection_start': 0,
           'zoom': 9},
+<<<<<<< HEAD
          1717756260.6857173],
         [loc('database/views.py'),
          {'attrib-starts': [('create_diagram|0|',
@@ -326,6 +620,107 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
           'code-line': 'def load_diagram(request, diagram_id:str):\r\n',
           'first-line': 189,
           'folded-linenos': [],
+=======
+         1717756252.127831],
+        [loc('database/views.py'),
+         {'attrib-starts': [],
+          'code-line': 'from django.shortcuts import render, redirect, HttpResponse\r\n',
+          'first-line': 18,
+=======
+          'sel-line': 512,
+          'sel-line-start': 18910,
+          'selection_end': 18941,
+          'selection_start': 18941,
+          'zoom': 0},
+         1712909360.4120178],
+        [loc('database/models.py'),
+         {'attrib-starts': [],
+          'code-line': 'class DiagramRule(StructuredNode, Model):\r\n',
+          'first-line': 629,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+          'sel-line': 0,
+          'sel-line-start': 0,
+          'selection_end': 0,
+          'selection_start': 0,
+          'zoom': 9},
+         1717756260.6857173],
+        [loc('database/views.py'),
+         {'attrib-starts': [('create_diagram|0|',
+                             19)],
+          'code-line': "        error_msg = f'{full_qualname(e)}: {e}'\r\n",
+          'first-line': 48,
+=======
+          'sel-line': 632,
+          'sel-line-start': 22690,
+          'selection_end': 22729,
+          'selection_start': 22722,
+          'zoom': 0},
+         1712909360.575729],
+        [loc('database/models.py'),
+         {'attrib-starts': [],
+          'code-line': 'class Category(StructuredNode):\r\n',
+          'first-line': 614,
+
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+          'sel-line': 53,
+          'sel-line-start': 2387,
+          'selection_end': 2435,
+          'selection_start': 2387,
+          'zoom': 9},
+         1717756308.7661579],
+        [loc('database/views.py'),
+         {'attrib-starts': [('create_diagram|0|',
+                             19)],
+          'code-line': "        error_msg = f'{full_qualname(e)}: {e}'\r\n",
+          'first-line': 18,
+
+
+=======
+          'sel-line': 619,
+          'sel-line-start': 22289,
+          'selection_end': 22318,
+          'selection_start': 22318,
+          'zoom': 0},
+         1712909439.0415459],
+        [loc('database/models.py'),
+         {'attrib-starts': [('Diagram|0|',
+                             279),
+                            ('Diagram|0|.build_match_query|0|',
+                             458)],
+          'code-line': '        if rels:\r\n',
+          'first-line': 502,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+          'sel-line': 53,
+          'sel-line-start': 2387,
+          'selection_end': 2435,
+          'selection_start': 2387,
+          'zoom': 9},
+         1717756310.0911365],
+        [loc('database/views.py'),
+         {'attrib-starts': [],
+          'code-line': 'def load_diagram(request, diagram_id:str):\r\n',
+          'first-line': 189,
+=======
+          'sel-line': 502,
+          'sel-line-start': 18642,
+          'selection_end': 18647,
+          'selection_start': 18647,
+          'zoom': 0},
+         1712909445.185531],
+        [loc('database/models.py'),
+         {'attrib-starts': [],
+          'code-line': 'class Category(StructuredNode):\r\n',
+          'first-line': 608,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'sel-line': 173,
           'sel-line-start': 6215,
           'selection_end': 6231,
@@ -337,7 +732,25 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                              173)],
           'code-line': '        if __debug__:\r\n',
           'first-line': 191,
+<<<<<<< HEAD
           'folded-linenos': [],
+=======
+=======
+          'sel-line': 609,
+          'sel-line-start': 22057,
+          'selection_end': 22071,
+          'selection_start': 22063,
+          'zoom': 0},
+         1712909465.7909675],
+        [loc('../../../../../../../../Python311/Lib/site-packages/django/urls/conf.py'),
+         {'attrib-starts': [('include|0|',
+                             16)],
+          'code-line': '        urlconf_module = import_module(urlconf_module)\n',
+          'first-line': 35,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'sel-line': 196,
           'sel-line-start': 7210,
           'selection_end': 7210,
@@ -357,7 +770,33 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
           'zoom': 9},
          1717756594.3913198],
         [loc('database/views.py'),
+<<<<<<< HEAD
          {'attrib-starts': [],
+=======
+=======
+          'sel-line': 38,
+          'sel-line-start': 1144,
+          'selection_end': 1144,
+          'selection_start': 1144,
+          'zoom': 0},
+         1712909477.160933],
+        [loc('dope/settings.py'),
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+         {'attrib-starts': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'code-line': 'def diagram_search(request, diagram_id):\r\n',
           'first-line': 337,
           'folded-linenos': [],
@@ -370,6 +809,23 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
         [loc('templates/database/diagram_search.html'),
          {'attrib-starts': [],
           'code-line': '{% load static %}\r\n',
+<<<<<<< HEAD
+=======
+=======
+          'code-line': '"""\r\n',
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'first-line': 0,
           'folded-linenos': [],
           'sel-line': 0,
@@ -377,12 +833,32 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
           'selection_end': 0,
           'selection_start': 0,
           'zoom': 0},
+<<<<<<< HEAD
          1717757385.592631],
         [loc('database/views.py'),
          {'attrib-starts': [],
           'code-line': 'def diagram_search(request, diagram_id):\r\n',
           'first-line': 355,
           'folded-linenos': [],
+=======
+<<<<<<< .mine
+         1717757385.592631],
+        [loc('database/views.py'),
+=======
+         1712909483.2249246],
+        [loc('dope/settings.py'),
+>>>>>>> .theirs
+         {'attrib-starts': [],
+<<<<<<< .mine
+          'code-line': 'def diagram_search(request, diagram_id):\r\n',
+          'first-line': 355,
+=======
+          'code-line': '"""\r\n',
+          'first-line': 44,
+>>>>>>> .theirs
+          'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
           'sel-line': 341,
           'sel-line-start': 12974,
           'selection_end': 13014,
@@ -402,6 +878,11 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
           'zoom': 9},
          1717757445.9919183],
         [loc('templates/database/diagram_search.html'),
+<<<<<<< HEAD
+         {'attrib-starts': [],
+          'code-line': '{% load static %}\r\n',
+          'first-line': 0,
+=======
          {'attrib-starts': [],
           'code-line': '{% load static %}\r\n',
           'first-line': 0,
@@ -411,6 +892,139 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
           'selection_end': 0,
           'selection_start': 0,
           'zoom': 0},
+         1717757452.4910722],
+        [loc('templates/cd_editor/diagram_editor.html'),
+         {'attrib-starts': [],
+          'code-line': '{% load static %}\r\n',
+          'first-line': 0,
+          'folded-linenos': [],
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+          'sel-line': 0,
+          'sel-line-start': 0,
+          'selection_end': 0,
+          'selection_start': 0,
+          'zoom': 0},
+<<<<<<< .mine
+         1717757460.1267993],
+        [loc('templates/cd_editor/diagram_editor.html'),
+         {'attrib-starts': [],
+          'code-line': '    <iframe id="diagram-search-iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals" src="" style="border: 0; width:100%; height:auto;">\r\n',
+          'first-line': 438,
+          'folded-linenos': [],
+          'sel-line': 447,
+          'sel-line-start': 27544,
+          'selection_end': 27555,
+          'selection_start': 27549,
+          'zoom': 0},
+         1717757461.1340919],
+        [loc('templates/cd_editor/diagram_editor.html'),
+         {'attrib-starts': [],
+          'code-line': '  <button class="btn btn-primary d-lg-flex align-items-lg-center navbar-main-link" data-bs-target="#diagram-search-offcanvas" data-bs-toggle="offcanvas" id="search-button" style="position: absolute;bottom: 3%;left: 1.5%;" type="button">\r\n',
+          'first-line': 442,
+          'folded-linenos': [],
+          'sel-line': 451,
+          'sel-line-start': 27789,
+          'selection_end': 27849,
+          'selection_start': 27843,
+          'zoom': 0},
+         1717757677.6973014],
+        [loc('database/views.py'),
+         {'attrib-starts': [('diagram_search|0|',
+                             341)],
+          'code-line': "        return render(request, 'diagram_search.html', context)\r\n",
+          'first-line': 410,
+          'folded-linenos': [],
+          'sel-line': 415,
+          'sel-line-start': 16312,
+          'selection_end': 16312,
+          'selection_start': 16312,
+          'zoom': 9},
+         1717757870.2753823],
+        [loc('database/views.py'),
+         {'attrib-starts': [('diagram_search|0|',
+                             341)],
+          'code-line': "        #ascending = request.GET.get('asc', 'true')\r\n",
+          'first-line': 338,
+          'folded-linenos': [],
+          'sel-line': 343,
+          'sel-line-start': 13028,
+          'selection_end': 13093,
+          'selection_start': 13035,
+          'zoom': 9},
+         1717757890.5668159]],
+=======
+         1712909490.3679414],
+        [loc('../../../../../../../../Python311/Lib/site-packages/django/urls/conf.py'),
+         {'attrib-starts': [('include|0|',
+                             16)],
+          'code-line': '        urlconf_module = import_module(urlconf_module)\n',
+          'first-line': 35,
+          'folded-linenos': [],
+          'sel-line': 38,
+          'sel-line-start': 1144,
+          'selection_end': 1144,
+          'selection_start': 1144,
+          'zoom': 0},
+         1712909492.3737347],
+        [loc('../../../../../../../../Python311/Lib/site-packages/django/urls/conf.py'),
+         {'attrib-starts': [('include|0|',
+                             16)],
+          'code-line': '        urlconf_module = import_module(urlconf_module)\n',
+          'first-line': 37,
+          'folded-linenos': [],
+          'sel-line': 38,
+          'sel-line-start': 1144,
+          'selection_end': 1144,
+          'selection_start': 1144,
+          'zoom': 0},
+         1712909493.0319765],
+        [loc('dope/urls.py'),
+         {'attrib-starts': [],
+          'code-line': "    path('rules', include('rules.urls')), \r\n",
+          'first-line': 19,
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
+          'folded-linenos': [],
+          'sel-line': 23,
+          'sel-line-start': 896,
+          'selection_end': 938,
+          'selection_start': 938,
+          'zoom': 0},
+<<<<<<< HEAD
          1717757452.4910722],
         [loc('templates/cd_editor/diagram_editor.html'),
          {'attrib-starts': [],
@@ -472,6 +1086,92 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
         20),
         'current-loc': loc('database/views.py'),
         'editor-state-list': [(loc('templates/database/create_diagram.html'),
+=======
+         1712909495.078175]],
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+        20),
+<<<<<<< .mine
+        'current-loc': loc('database/views.py'),
+        'editor-state-list': [(loc('templates/database/create_diagram.html'),
+
+
+
+
+
+
+
+
+
+
+
+=======
+        'current-loc': loc('dope/urls.py'),
+        'editor-state-list': [(loc('../../../../../../../../Python311/Lib/site-packages/django/urls/conf.py'),
+                               {'attrib-starts': [('include|0|',
+        16)],
+                                'code-line': '        urlconf_module = import_module(urlconf_module)\n',
+                                'first-line': 37,
+                                'folded-linenos': [],
+                                'sel-line': 38,
+                                'sel-line-start': 1144,
+                                'selection_end': 1144,
+                                'selection_start': 1144,
+                                'zoom': 0}),
+                              (loc('database/models.py'),
+>>>>>>> .theirs
+                               {'attrib-starts': [],
+<<<<<<< .mine
+                                'code-line': '{% load static %}\r\n',
+                                'first-line': 0,
+=======
+                                'code-line': 'class Category(StructuredNode):\r\n',
+                                'first-line': 608,
+>>>>>>> .theirs
+                                'folded-linenos': [],
+<<<<<<< .mine
+                                'sel-line': 0,
+                                'sel-line-start': 0,
+                                'selection_end': 0,
+                                'selection_start': 0,
+=======
+                                'sel-line': 609,
+                                'sel-line-start': 22057,
+                                'selection_end': 22071,
+                                'selection_start': 22063,
+>>>>>>> .theirs
+                                'zoom': 0}),
+<<<<<<< .mine
+                              (loc('templates/cd_editor/diagram_editor.html'),
+=======
+                              (loc('dope/settings.py'),
+>>>>>>> .theirs
+                               {'attrib-starts': [],
+<<<<<<< .mine
+                                'code-line': '  <button class="btn btn-primary d-lg-flex align-items-lg-center navbar-main-link" data-bs-target="#diagram-search-offcanvas" data-bs-toggle="offcanvas" id="search-button" style="position: absolute;bottom: 3%;left: 1.5%;" type="button">\r\n',
+                                'first-line': 442,
+=======
+                                'code-line': '"""\r\n',
+                                'first-line': 44,
+>>>>>>> .theirs
+                                'folded-linenos': [],
+                                'sel-line': 451,
+                                'sel-line-start': 27789,
+                                'selection_end': 27821,
+                                'selection_start': 27815,
+                                'zoom': 0}),
+                              (loc('templates/cd_editor/diagram_editor_include.html'),
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                                {'attrib-starts': [],
                                 'code-line': '{% load static %}\r\n',
                                 'first-line': 0,
@@ -481,6 +1181,7 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                                 'selection_end': 0,
                                 'selection_start': 0,
                                 'zoom': 0}),
+<<<<<<< HEAD
                               (loc('templates/cd_editor/diagram_editor.html'),
                                {'attrib-starts': [],
                                 'code-line': '  <button class="btn btn-primary d-lg-flex align-items-lg-center navbar-main-link" data-bs-target="#diagram-search-offcanvas" data-bs-toggle="offcanvas" id="search-button" style="position: absolute;bottom: 3%;left: 1.5%;" type="button">\r\n',
@@ -506,6 +1207,23 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                                 'code-line': '{% load static %}\r\n',
                                 'first-line': 0,
                                 'folded-linenos': [],
+=======
+<<<<<<< .mine
+                              (loc('templates/database/diagram_search.html'),
+=======
+                              (loc('dope/urls.py'),
+>>>>>>> .theirs
+                               {'attrib-starts': [],
+<<<<<<< .mine
+                                'code-line': '{% load static %}\r\n',
+                                'first-line': 0,
+=======
+                                'code-line': "    #path('rules', include('rules.urls')), \r\n",
+                                'first-line': 22,
+>>>>>>> .theirs
+                                'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                                 'sel-line': 0,
                                 'sel-line-start': 0,
                                 'selection_end': 0,
@@ -544,7 +1262,52 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                                 'selection_start': 14411,
                                 'zoom': 9})],
         'has-focus': True,
+<<<<<<< HEAD
         'locked': False},
+=======
+=======
+                                'sel-line': 23,
+                                'sel-line-start': 896,
+                                'selection_end': 939,
+                                'selection_start': 939,
+                                'zoom': 0})],
+        'has-focus': True,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+        'locked': False},
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         [loc('templates/database/create_diagram.html'),
          loc('templates/cd_editor/diagram_editor.html'),
          loc('templates/cd_editor/diagram_editor_include.html'),
@@ -559,13 +1322,42 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
         'templates/database/create_diagram.html',
         'templates/database/diagram_search.html',
         'database/views.py']},
+<<<<<<< HEAD
+=======
+=======
+        [loc('../../../../../../../../Python311/Lib/site-packages/django/urls/conf.py'),
+         loc('database/models.py'),
+         loc('dope/settings.py'),
+         loc('dope/urls.py')]),
+                               'open_files': ['database/models.py',
+        'dope/settings.py',
+        'dope/urls.py']},
+
+
+
+
+
+
+
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'saved_notebook_display': None,
         'split_percents': {0: 0.29875195007800315},
         'splits': 1,
         'tab_location': 'top',
         'traversal_pos': ((0,
+<<<<<<< HEAD
                            2),
                           1717761050.4562938),
+=======
+<<<<<<< .mine
+                           2),
+                          1717761050.4562938),
+=======
+                           7),
+                          1712909465.4670424),
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'user_data': {}},
                  'saved_notebook_display': None,
                  'split_percents': {},
@@ -573,8 +1365,18 @@ guimgr.overall-gui-state = {'windowing-policy': 'combined-window',
                  'tab_location': 'left',
                  'traversal_pos': ((0,
                                     0),
+<<<<<<< HEAD
                                    1717757360.8701692),
                  'user_data': {}},
+=======
+<<<<<<< .mine
+                                   1717757360.8701692),
+=======
+                                   1712908624.7945774),
+>>>>>>> .theirs
+                 'user_data': {}},
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'window-alloc': (327,
                          76,
                          739,
@@ -606,6 +1408,42 @@ guimgr.visual-state = {loc('../../../../../../../Python311/Lib/site-packages/dja
         'selection_start': 32547,
         'zoom': 0},
                        loc('../../../../../../../Python311/Lib/site-packages/neomodel/relationship_manager.py'): {'attrib-starts': [],
+<<<<<<< HEAD
+=======
+=======
+        'window-alloc': (8,
+                         -16,
+                         1364,
+                         734)}]}
+guimgr.recent-documents = [loc('dope/urls.py'),
+                           loc('../../../../../../../../Python311/Lib/site-packages/django/urls/conf.py'),
+                           loc('dope/settings.py'),
+                           loc('database/models.py')]
+guimgr.visual-state = {loc('../../../../../../../Python311/Lib/site-packages/neomodel/relationship_manager.py'): {'attrib-starts': [],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'code-line': 'class RelationshipTo(RelationshipDefinition):\n',
         'first-line': 483,
         'folded-linenos': [],
@@ -695,6 +1533,28 @@ guimgr.visual-state = {loc('../../../../../../../Python311/Lib/site-packages/dja
         'selection_end': 653,
         'selection_start': 630,
         'zoom': 0},
+                       loc('../QuiverDatabase/database_service/http_tools.py'): {'attrib-starts': [('get_diagram|0|',
+        6)],
+        'code-line': '        raise ObjectDoesNotExist(\r\n',
+        'first-line': 0,
+        'folded-linenos': [],
+        'sel-line': 10,
+        'sel-line-start': 300,
+        'selection_end': 319,
+        'selection_start': 319,
+        'zoom': 0},
+                       loc('../QuiverDatabase/database_service/models.py'): {'attrib-starts': [('DiagramRule|0|',
+        528),
+        ('DiagramRule|0|.checked_out_by|1|',
+         546)],
+        'code-line': '            diagram.save()\r\n',
+        'first-line': 545,
+        'folded-linenos': [],
+        'sel-line': 553,
+        'sel-line-start': 20375,
+        'selection_end': 20401,
+        'selection_start': 20401,
+        'zoom': 0},
                        loc('README.md'): {'attrib-starts': [],
         'code-line': '# Abstract Spacecraft #\r\n',
         'first-line': 0,
@@ -704,8 +1564,86 @@ guimgr.visual-state = {loc('../../../../../../../Python311/Lib/site-packages/dja
         'selection_end': 0,
         'selection_start': 0,
         'zoom': 0},
+<<<<<<< HEAD
                        loc('cd_editor/urls.py'): {'attrib-starts': [],
         'code-line': 'from .views import diagram_editor\r\n',
+=======
+<<<<<<< .mine
+                       loc('cd_editor/urls.py'): {'attrib-starts': [],
+        'code-line': 'from .views import diagram_editor\r\n',
+
+
+
+
+
+
+
+
+
+=======
+                       loc('accounts/urls.py'): {'attrib-starts': [],
+        'code-line': 'urlpatterns = [\r\n',
+        'first-line': 17,
+        'folded-linenos': [],
+        'sel-line': 22,
+        'sel-line-start': 906,
+        'selection_end': 921,
+        'selection_start': 921,
+        'zoom': 0},
+                       loc('cd_editor/views.py'): {'attrib-starts': [],
+        'code-line': 'from django.shortcuts import render\r\n',
+>>>>>>> .theirs
+        'first-line': 0,
+        'folded-linenos': [],
+        'sel-line': 1,
+        'sel-line-start': 30,
+        'selection_end': 63,
+        'selection_start': 49,
+        'zoom': 0},
+<<<<<<< .mine
+                       loc('cd_editor/views.py'): {'attrib-starts': [('diagram_editor|0|',
+        5)],
+        'code-line': "        return render(request, 'diagram_editor.html', context)\r\n",
+        'first-line': 4,
+
+
+=======
+                       loc('database/models.py'): {'attrib-starts': [('Diagram|0|',
+        279),
+        ('Diagram|0|.build_match_query|0|',
+         458)],
+        'code-line': '            # (template, neo4j regex)\r\n',
+        'first-line': 6,
+>>>>>>> .theirs
+        'folded-linenos': [],
+<<<<<<< .mine
+        'sel-line': 10,
+        'sel-line-start': 293,
+        'selection_end': 293,
+        'selection_start': 293,
+=======
+        'sel-line': 463,
+        'sel-line-start': 17131,
+        'selection_end': 17168,
+        'selection_start': 17168,
+>>>>>>> .theirs
+        'zoom': 0},
+<<<<<<< .mine
+                       loc('database/models.py'): {'attrib-starts': [('get_model_class|0|',
+        627)],
+
+
+
+
+
+
+
+
+
+=======
+                       loc('database/neo4j_tools.py'): {'attrib-starts': [],
+        'code-line': 'def escape_regex_str(string):\r\n',
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'first-line': 0,
         'folded-linenos': [],
         'sel-line': 1,
@@ -778,6 +1716,113 @@ guimgr.visual-state = {loc('../../../../../../../Python311/Lib/site-packages/dja
         'selection_end': 0,
         'selection_start': 0,
         'zoom': 0},
+<<<<<<< HEAD
+=======
+                       loc('database/views.py'): {'attrib-starts': [('save_diagram|0|',
+        207)],
+>>>>>>> .theirs
+        'code-line': '\r\n',
+        'first-line': 629,
+        'folded-linenos': [],
+        'sel-line': 637,
+        'sel-line-start': 22792,
+        'selection_end': 22792,
+        'selection_start': 22792,
+        'zoom': 0},
+<<<<<<< .mine
+                       loc('database/urls.py'): {'attrib-starts': [],
+        'code-line': "    path('diagram-search/<str:diagram_id>', diagram_search, name='diagram_search'), \r\n",
+        'first-line': 0,
+        'folded-linenos': [],
+        'sel-line': 10,
+        'sel-line-start': 538,
+        'selection_end': 578,
+        'selection_start': 578,
+        'zoom': 0},
+                       loc('database/views.py'): {'attrib-starts': [],
+        'code-line': 'def diagram_search(request, diagram_id):\r\n',
+        'first-line': 337,
+        'folded-linenos': [],
+        'sel-line': 341,
+        'sel-line-start': 12995,
+        'selection_end': 13033,
+        'selection_start': 13033,
+        'zoom': 9},
+                       loc('dope/settings.py'): {'attrib-starts': [],
+        'code-line': 'MAX_DIAGRAM_NAME_LEN = 64\r\n',
+        'first-line': 201,
+        'folded-linenos': [],
+        'sel-line': 203,
+        'sel-line-start': 6173,
+        'selection_end': 6193,
+        'selection_start': 6173,
+        'zoom': 0},
+                       loc('dope/urls.py'): {'attrib-starts': [],
+        'code-line': "    path('database/', include('database.urls')),\r\n",
+        'first-line': 18,
+        'folded-linenos': [],
+        'sel-line': 25,
+        'sel-line-start': 1019,
+        'selection_end': 1038,
+        'selection_start': 1038,
+        'zoom': 0},
+                       loc('dope/views.py'): {'attrib-starts': [],
+        'code-line': '#from .http_tools import render_to_json\r\n',
+        'first-line': 6,
+        'folded-linenos': [],
+        'sel-line': 0,
+        'sel-line-start': 0,
+        'selection_end': 0,
+        'selection_start': 0,
+        'zoom': 0},
+=======
+                       loc('dope/urls.py'): {'attrib-starts': [],
+        'code-line': "    path('rules', include('rules.urls')), \r\n",
+        'first-line': 19,
+        'folded-linenos': [],
+        'sel-line': 23,
+        'sel-line-start': 896,
+        'selection_end': 938,
+        'selection_start': 938,
+        'zoom': 0},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                        loc('primes.py'): {'attrib-starts': [],
         'code-line': '                    print((n, x, y, z, w))',
         'first-line': 0,
@@ -833,14 +1878,37 @@ guimgr.visual-state = {loc('../../../../../../../Python311/Lib/site-packages/dja
         'selection_start': 212,
         'zoom': 0},
                        loc('twin_primes.py'): {'attrib-starts': [],
+<<<<<<< HEAD
         'code-line': 'd = RepSeq(2, 1, 1)\r\n',
         'first-line': 120,
         'folded-linenos': [],
+=======
+<<<<<<< .mine
+        'code-line': 'd = RepSeq(2, 1, 1)\r\n',
+        'first-line': 120,
+=======
+        'code-line': 'c = RepSeq(1, 1, 2)\r\n',
+        'first-line': 128,
+>>>>>>> .theirs
+        'folded-linenos': [],
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
         'sel-line': 132,
         'sel-line-start': 3635,
         'selection_end': 3654,
         'selection_start': 3654,
+<<<<<<< HEAD
         'zoom': 4}}
+=======
+=======
+        'sel-line': 131,
+        'sel-line-start': 3614,
+        'selection_end': 3626,
+        'selection_start': 3626,
+>>>>>>> .theirs
+        'zoom': 4}}
+<<<<<<< .mine
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
 search.search-history = ['iframe',
                          'diagram',
                          'rule_search.html',
@@ -852,6 +1920,22 @@ search.search-history = ['iframe',
                          'def create_diagram',
                          'create_diagram',
                          'DATABASE',
+<<<<<<< HEAD
+=======
+=======
+search.search-history = [', Model',
+                         ', M',
+                         ',',
+                         'Category',
+                         'Model',
+                         'DATABASE',
+
+
+
+
+
+>>>>>>> .theirs
+>>>>>>> e993508db54bfb825648f7df349df02e8edd9332
                          'DATA',
                          'model=']
 testing.stored-results = (1,
