@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 /bssexport/.bss-to-django-config.pkl
 /bssexport/.bss-to-django-config.pkl
+bssexport

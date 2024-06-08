@@ -22,6 +22,7 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
   <link href='{% static "cd_editor/css/navbar.css" %}' rel="stylesheet"/>
+  <link href='{% static "css/iframe.css" %}' rel="stylesheet"/>
   <link href='{% static "css/main.css" %}' rel="stylesheet"/>
   <link href='{% static "css/switch.css" %}' rel="stylesheet"/>
   <link href="{% static 'quiver/src/KaTeX/katex.min.css' %}" rel="stylesheet"/>
@@ -435,7 +436,20 @@
    </div>
    {% include 'diagram_editor_include.html' %}
   </div>
-  <button class="btn btn-primary d-lg-flex align-items-lg-center navbar-main-link" id="search-button" style="position: absolute;bottom: 3%;left: 1.5%;" type="button">
+  <div class="offcanvas offcanvas-start" id="diagram-search-offcanvas" style="width: 100%;height: auto;" tabindex="-1">
+   <div class="offcanvas-header">
+    <h5 class="offcanvas-title">
+     Diagram Search
+    </h5>
+    <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button">
+    </button>
+   </div>
+   <div class="offcanvas-body">
+    <iframe id="diagram-search-iframe" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals" src="{% url 'diagram_search' diagram_id %}" style="border: 0; width:100%; height:100%;">
+    </iframe>
+   </div>
+  </div>
+  <button class="btn btn-primary d-lg-flex align-items-lg-center navbar-main-link" data-bs-target="#diagram-search-offcanvas" data-bs-toggle="offcanvas" id="search-button" style="position: absolute;bottom: 3%;left: 1.5%;" type="button">
    <svg class="bi bi-search-heart" fill="currentColor" height="1em" style="font-size: 27px;" viewbox="0 0 16 16" width="1em" xmlns="http://www.w3.org/2000/svg">
     <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018">
     </path>

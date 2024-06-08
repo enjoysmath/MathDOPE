@@ -4,7 +4,7 @@ from neomodel import (StructuredNode, StructuredRel, IntegerProperty,
                       RelationshipTo)
 #from django_neomodel import DjangoNode
 #from django.db import models
-from dope.settings import MAX_ATOMIC_LATEX_LENGTH, DEFAULT_CATEGORY_NAME, MAX_DIAGRAM_NAME_LEN, MAX_SLUG_LEN
+from dope.settings import MAX_ATOMIC_LATEX_LENGTH, DEFAULT_CATEGORY_NAME, MAX_DIAGRAM_NAME_LEN
 from django.core.exceptions import ObjectDoesNotExist
 from neomodel import db
 from dope.python_tools import deep_get
@@ -286,7 +286,6 @@ class Diagram(StructuredNode):
    
     uid = UniqueIdProperty()
     name = StringProperty(max_length=MAX_DIAGRAM_NAME_LEN, default='?')
-    slug = StringProperty(required=True)
     author_id = IntegerProperty(required=True)
     objects = RelationshipTo('Object', 'HAS_OBJECT', cardinality=ZeroOrMore)       
     
@@ -635,21 +634,6 @@ def get_model_class(Model:str):
     
     Model = model_str_to_class[Model]    
     return Model
-
-
-def get_model_by_slug(Model, slug:str):
-    if len(slug) > MAX_SLUG_LEN:
-        raise ValueError(f'That {Model} name is longer than {MAX_TEXT_LENGTH} characters.')
-    
-    if isinstance(Model, str):
-        Model = get_model_class(Model)
-        
-    model = Model.nodes.get_or_none(slug=slug)
-    
-    if model is None:
-        raise ObjectDoesNotExist(f'An instance of the {Model} with name "{slug}" does not exist.')
-    
-    return model
 
 
 def get_model_by_uid(Model, uid:str):
