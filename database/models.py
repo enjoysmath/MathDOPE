@@ -509,16 +509,6 @@ class Diagram(StructuredNode):
 
 
 
-class Category(StructuredNode):
-    uid = UniqueIdProperty()
-    name = StringProperty(required=True)
-
-    @staticmethod
-    def our_create(**kwargs):
-        category = Category(**kwargs).save()
-        return category
-
-
 #class Context:
     #diagrams = RelationshipTo('Diagram', 'ENTAILS')
     
@@ -615,11 +605,91 @@ class Category(StructuredNode):
     ##def get_variable_template_regex(self, text:str) -> bidict:    
 
 
+        
+class Category(StructuredNode):
+    unique_fields = ['name']
+    uid = UniqueIdProperty()
+    name = StringProperty(max_length=128, required=True)
+    objects = RelationshipTo('Object', 'CONTAINS')
+    of_categories = BooleanProperty(default=False)
+
+    @staticmethod
+    def our_create(**kwargs):
+        category = Category(**kwargs).save()
+        return category
+
+
+class DiagramRule(StructuredNode):
+    uid = UniqueIdProperty()
+    name = StringProperty(max_length=128) # MAX_TEXT_LENGTH, required=True)
+    checkedOutBy = StringProperty(max_length=128) # MAX_TEXT_LENGTH)
+    key_diagram = RelationshipTo('Diagram', 'KEY_DIAGRAM', cardinality=One)
+    result_diagram = RelationshipTo('Diagram', 'RESULT_DIAGRAM', cardinality=One)
+    
+    # Mathematics
+    #functor_id = StringProperty()
+    # The link to an actual known functor, if this rule is factorial, or None otherwise
+    # We will have to be careful when deleting a Functor.  We can only delete it
+    # if there exist no rules referring to it through this property.
+    
+    @property
+    def checked_out_by(self):
+        return self.checkedOutBy
+    
+    @checked_out_by.setter
+    def checked_out_by(self, username):
+        if self.checked_out_by != username:
+            diagram = self.key_diagram.single()
+            diagram.checked_out_by = username
+            diagram.save()
+            diagram = self.result_diagram.single()
+            diagram.checked_out_by = username
+            diagram.save()
+            self.checkedOutBy = username
+            self.save()
+            
+    def can_be_checked_out(self):
+        return self.key_diagram.single().checked_out_by is None and \
+            self.result_diagram.single().checked_out_by is None and \
+            self.checked_out_by is None
+    
+    @staticmethod
+    def our_create(key=None, res=None, **kwargs):
+        if key is None:
+            key = 'Key'
+        if res is None:
+            res = 'Result'
+            
+        cat = get_unique(Category, name='Any')    
+        source = Diagram(name=key).save()
+        source.category.connect(cat)
+        source.save()
+        target = Diagram(name=res).save()
+        target.category.connect(cat)
+        target.save()
+        rule = DiagramRule(**kwargs)
+        rule.save()
+        rule.key_diagram.connect(source)
+        rule.result_diagram.connect(target)
+        rule.save()
+        return rule
+        
+    #@staticmethod
+    #def get_variable_mapping(source:Diagram, target:Diagram) -> dict:
+        #map = {}
+        
+        #for x in source.all_objects():
+            #template, vars = Variable.parse_template(text)
+                
+    #def get_variable_template_regex(self, text:str) -> bidict:   
+
 
 
 model_str_to_class = {
+    'Category' : Category,
     'Object' : Object,
     'Diagram' : Diagram,
+    'DiagramRule' : DiagramRule,
     #'DiagramRule' : DiagramRule,
 }
 

@@ -21,6 +21,7 @@ from accounts.views import register
 from .views import messages_, clear_messages
 
 urlpatterns = [
+    #path('rules', include('rules.urls')), 
     path('messages', messages_, name='messages'),
     path('clear_messages', clear_messages, name='clear_messages'),    
     path('database/', include('database.urls')),

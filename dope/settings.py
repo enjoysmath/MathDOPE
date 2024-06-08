@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django_neomodel',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rules.apps.RulesConfig',
 ]
 
 MIDDLEWARE = [
@@ -232,4 +233,3 @@ if "WINGDB_ACTIVE" in os.environ:
         TEMPLATES[0]["OPTIONS"]["debug"] = True
     except Exception:
         TEMPLATE_DEBUG = True
-
