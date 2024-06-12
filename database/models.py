@@ -228,7 +228,7 @@ class Object(StructuredNode):
     def __repr__(self):
         return f'Object("{self.name}")'
     
-    def all_outgoing_arrows(self):
+    def morphisms(self):
         query = \
             f"MATCH (X:Object)-[r:CONNECTS_TO]->(:Object)" \
             f"WHERE X.uid='{self.uid}' " \
@@ -292,7 +292,7 @@ class Diagram(StructuredNode):
     def morphism_count(self):
         count = 0
         for x in self.all_objects():
-            count += len(x.morphisms)
+            count += len(x.morphisms())
         return count
     
     def copy(self, **kwargs):
@@ -348,7 +348,7 @@ class Diagram(StructuredNode):
         
         for o in objects:
             vertices.append(o.quiver_format())
-            for f in o.all_outgoing_arrows():
+            for f in o.morphisms():
                 edges.append(f.quiver_format())
                     
         format = [0, len(vertices)]
@@ -396,8 +396,8 @@ class Diagram(StructuredNode):
     @staticmethod
     def get_paths_by_length(diagram_uid):
         paths_by_length = \
-            f"MATCH (D:Diagram)-[:HAS_OBJECT]->(X:Node), " + \
-            f"p=(X)-[:CONNECTS_TO*]->(:Node) " + \
+            f"MATCH (D:Diagram)-[:HAS_OBJECT]->(X:Object), " + \
+            f"p=(X)-[:CONNECTS_TO*]->(:Object) " + \
             f"WHERE D.uid = '{diagram_uid}' " + \
             f"RETURN p " + \
             f"ORDER BY length(p) DESC" 
@@ -423,7 +423,7 @@ class Diagram(StructuredNode):
             path = path[0]   # [0] is definitely needed here
             node = Object.inflate(path.start_node)
             
-            search_query += f"(n{node.diagram_index}:Node)"
+            search_query += f"(n{node.diagram_index}:Object)"
             
             if node.diagram_index not in nodes:
                 nodes[node.diagram_index] = node
@@ -439,7 +439,7 @@ class Diagram(StructuredNode):
                     
                     add_query += f"-[r{rel.diagram_index}:CONNECTS_TO]->"
                     next_node = rel.end_node()  # BUGFIX: no need to inflate here
-                    add_query += f"(n{next_node.diagram_index}:Node)"
+                    add_query += f"(n{next_node.diagram_index}:Object)"
                     
                     # BUGFIX: don't forget to add the next node into nodes:
                     if next_node.diagram_index not in nodes:
@@ -463,15 +463,11 @@ class Diagram(StructuredNode):
             # (template, neo4j regex)
         }
         
-        #var_mapping = {
-            ## Keyed by variable object, value is list of tuples (node or rel, template_index)
-        #}
-        
         def neo4j_regex_from_template(template):
             regex = ""
             for piece in template:
                 if isinstance(piece, Variable):
-                    regex += ".+"
+                    regex += '.+'
                 elif isinstance(piece, Keyword):
                     regex += neo4j_escape_regex_str(str(piece))
                 else:  # str
@@ -497,13 +493,15 @@ class Diagram(StructuredNode):
         query += " WHERE "
         
         for index, node in nodes.items():
-            query += f"n{index}.uid =~ '{template_regexes[node.uid][1]}' AND "
+            query += f"n{index}.name =~ '{template_regexes[node.name][1]}' AND "
             
         if rels:
             for index, rel in rels.items():
-                query += f"r{index}.uid =~ '{template_regexes[rel.uid][1]}' AND "
+                query += f"r{index}.name =~ '{template_regexes[rel.name][1]}' AND "
             
         query = query[:-5]   # Remove AND      
+        
+        query += " RETURN " + ",".join(f"n{i}" for i in range(len(nodes))) + "," + ",".join(f"r{i}" for i in range(len(rels)))
         
         return template_regexes, query   
 

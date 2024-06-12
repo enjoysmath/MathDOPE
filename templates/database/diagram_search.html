@@ -20,6 +20,7 @@
   <link href='{% static "bootstrap/css/bootstrap.min.css" %}' rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"/>
+  <link href='{% static "css/Articles-Cards-images.css" %}' rel="stylesheet"/>
   <link href='{% static "css/iframe.css" %}' rel="stylesheet"/>
   <link href='{% static "css/main.css" %}' rel="stylesheet"/>
   <link href='{% static "css/switch.css" %}' rel="stylesheet"/>
@@ -41,35 +42,52 @@
   </script>
  </head>
  <body>
-  <section class="py-4 py-xl-5">
-   <div class="container">
-    <div class="text-dark bg-light border rounded border-0 border-light d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5" data-bs-theme="light">
-     <div class="text-center text-lg-start py-3 py-lg-1">
-      <h2 class="fw-bold mb-2">
-       <strong>
-        Subscribe to our newsletter
-       </strong>
-      </h2>
-      <p class="mb-0">
-       Imperdiet consectetur dolor.
-      </p>
-     </div>
-     <form class="d-flex justify-content-center flex-wrap my-2" method="post">
-      <div class="my-2">
-       <input class="form-control" name="email" placeholder="Your Email" type="email"/>
-      </div>
-      <div class="my-2">
-       <button class="btn btn-primary ms-sm-2" type="submit">
-        Subscribe
-       </button>
-      </div>
-     </form>
+  <div class="container py-4 py-xl-5">
+   <div class="row mb-5">
+    <div class="col-md-8 col-xl-6 text-center mx-auto">
+     <h2>
+      Search Results
+     </h2>
+     <p class="w-lg-50">
+      Click the button
+     </p>
     </div>
    </div>
-  </section>
+   <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+    {% for diagram_id in diagrams %}
+    <div class="col">
+     <div class="card">
+      <img class="card-img-top w-100 d-block fit-cover" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" style="height: 200px;"/>
+      <div class="card-body p-4">
+       <p class="text-primary card-text mb-0">
+        Article
+       </p>
+       <h4 class="card-title">
+        {{ diagram_id }}
+       </h4>
+       <p class="card-text">
+        Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.
+       </p>
+       <div class="d-flex">
+        <img class="rounded-circle flex-shrink-0 me-3 fit-cover" height="50" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" width="50"/>
+        <div>
+         <p class="fw-bold mb-0">
+          John Smith
+         </p>
+         <p class="text-muted mb-0">
+          Erat netus
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    {% endfor %}
+   </div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js">
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
   </script>
   <script src='{% static "js/bs-init.js" %}'>
   </script>

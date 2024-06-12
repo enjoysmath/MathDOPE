@@ -6,8 +6,12 @@ from database.neo4j_tools import escape_regex_str, neo4j_escape_regex_str
 
 class Variable:
     base_parser = Atom.alphabet_parser
-    subscript_parser = re.compile(r"\{-?[0-9]+\}|[0-9]")  # Put longest alternative first
-    prime_parser = re.compile(r"'+")
+    subscr_regex = r"\{-?[0-9]+\}|[0-9]"
+    subscript_parser = re.compile(subscr_regex)  # Put longest alternative first
+    prime_regex = r"'+"
+    prime_parser = re.compile(prime_regex)
+    variable_regex = None
+    
     # Couldn't get longest match to work when using {0, 2} in a regex, so had to split up into
     # multiple regexes and somewhat manually parse.    
     
@@ -177,3 +181,9 @@ class Variable:
         # Exact match desired hence ^ $:
         #return re.compile('^' + regex + '$'), var_count
         return re.compile(regex), var_count
+    
+    
+P = Variable.prime_regex
+S = Variable.subscr_regex
+B = Atom.alpha_regex
+Variable.variable_regex = f'{B}(({P}_{S})|(_{S}{P})'

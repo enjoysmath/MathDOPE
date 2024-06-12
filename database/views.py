@@ -338,22 +338,24 @@ def rule_search(request, diagram_id:str):
         return redirect('error', f'{full_qualname(e)}: {str(e)}')
     
     
+def doesnt_varmatch_1to1(query, regexes, result):
+    for X in query.all_objects():
+        template, regex = regexes[X.name]
+        
+        for f in X.morphisms():
+            f_template, f_regex = regexes[X.name]
+    
+    
 @login_required
 def diagram_search(request, diagram_id):
-    try:  
-        #ascending = request.GET.get('asc', 'true')
-        #order_param = request.GET.get('ord', 'name')
-        #one_to_one = request.GET.get('onetoone', '1')
+    try:
+        query_diagram = get_model_by_uid(Diagram, diagram_id)
         
-        #if ascending not in ('true', 'false'):
-            #raise ValueError(f'Invalid order direction parameter (asc) value: {ascending}')
+        if query_diagram is None:
+            raise OperationalError(f"Query diagram by that id ({diagram_id}) doesn't exist in the database.")
         
-        #if one_to_one not in ('0', '1'):
-            #raise ValueError(f'Invalid one-to-one parameter (onetoone) value: {one_to_one}')
-        
-        #if order_param not in rule_search_order_map:
-            #raise ValueError(order_param + " is not a valid value to order by.")        
-        
+        proof_mode = int(request.GET.get('proof_mode', '1'))
+
         # Starting from longest paths first should shorten the final search query (not this one)        
         paths_by_length = Diagram.get_paths_by_length(diagram_id)          
         nodes, rels, search_query = Diagram.build_query_from_paths(paths_by_length)
@@ -362,28 +364,35 @@ def diagram_search(request, diagram_id):
         
         if search_query:
             regexes, search_query = Diagram.build_match_query(search_query, nodes, rels)
-            search_query += "RETURN n0"
             # We only need n0 to get a diagram id at this stage of the app UX
             
             results, meta = db.cypher_query(search_query)
             
-            diagram_memo = {
-                # To weed out duplicated results, keyed by rule.uid
-            }
+            diagram_memo = set(
+                # To weed out duplicated results, keyed by diagram.uid
+            )            
             
-            #for result in results:
-                #n0 = Object.inflate(result[0])
+            for result in results:
+                n0 = Object.inflate(result[0])
                 
-                #diagram_results, meta = db.cypher_query(
-                    #f"MATCH (D:Diagram)-[:CONTAINS]->(X:Object) WHERE X.uid = '{n0.uid}' RETURN D.uid")
+                diagram_results, meta = db.cypher_query(f"MATCH (D:Diagram)-[:HAS_OBJECT]->(X:Object) WHERE X.uid = '{n0.uid}' RETURN D.uid")
                 
-                #if diagram_results and diagram_results[0]:
-                    #result_diagram_id = diagram_results[0][0]
-                    #rules_query = \
-                        #f"MATCH (R:DiagramRule)-[:KEY_DIAGRAM]->(D:Diagram) " + \
-                        #f"WHERE D.uid = '{result_diagram_id}' RETURN R" 
+                if diagram_results and diagram_results[0]:
+                    res_diagram_id = diagram_results[0][0]
                     
-                    ##HERE'S WHERE WE INSERT ORDERING CODE also key / result search^^
+                    if res_diagram_id not in diagram_memo:
+                        diagram_memo.add(res_diagram_id)
+                        result_diagram = get_model_by_uid(Diagram, res_diagram_id)
+                        
+                        if proof_mode:
+                            if len(result_diagram.objects) != len(query_diagram.objects) or \
+                               len(result_diagram.morphism_count()) != len(query_diagram.morphism_count()):
+                                continue
+                            
+                            if result_diagram.doesnt_varmatch_1to1(query_diagram, regexes):
+                                continue
+                        
+                        diagrams.append(result_diagram)
                     
                     #results, meta = db.cypher_query(rules_query)                
                     
